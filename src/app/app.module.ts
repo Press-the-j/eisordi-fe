@@ -14,12 +14,11 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 /* ENV */
 import { environment } from '../environments/environment';
-import { HeroWelcomeComponent } from './welcome/hero-welcome/hero-welcome.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroWelcomeComponent
   ],
   imports: [
     BrowserModule,
