@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JumbotronComponent implements OnInit {
 
+  public logo=`../../../../assets/img/logo/logo-green-faded.svg`
+
   constructor() { }
 
   ngOnInit(): void {

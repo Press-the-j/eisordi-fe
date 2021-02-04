@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { fromEvent, Subject, Subscription } from 'rxjs';
 import { ResponsiveService } from '../service/responsive.service';
 
 @Component({
@@ -9,8 +10,14 @@ import { ResponsiveService } from '../service/responsive.service';
 })
 export class HomeComponent implements OnInit {
 
-  screen$
-  subscriptions: Subscription;
+  
+  axis = new Subject();
+  axis$ = this.axis.asObservable();
+  
+  screen$: string;
+  subscriptions =  new Subscription;
+  
+  
   constructor(
     private  responsiveService: ResponsiveService
   ) { }
@@ -20,13 +27,28 @@ export class HomeComponent implements OnInit {
       this.screen$=size;
       console.log(size)
     })
-    this.subscriptions.add(screenSub$)
+    
+
+    fromEvent(window, 'wheel').pipe(takeUntil(this.axis$))
+			.subscribe((e: Event) => {
+        if (e.deltaY <0) {
+          console.log('eccolo');
+          
+        }
+      });
+    
+    this.subscriptions.add(screenSub$);
     this.responsiveService.checkResolution();
     
   }
 
+  getYPosition(e: Event): number {
+    return (e.target as Element).scrollTop;
+  }
+
 
   ngOnDestroy(): void {
+    this.axis.next();
     this.subscriptions.unsubscribe()
   }
 

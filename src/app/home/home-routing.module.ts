@@ -13,6 +13,11 @@ const routes: Routes = [
         component: WelcomeComponent,// 
         pathMatch: 'full'
       }, 
+      {
+        path: '/steps-to-follow',
+        component: WelcomeComponent,// 
+        pathMatch: 'full'
+      }, 
     ]
   }
 ];

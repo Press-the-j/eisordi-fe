@@ -1,5 +1,10 @@
-.jumbotron {
+@import '../../../shared/styles/mixin.scss';
+
+.jumbo {
   height: 100vh;
   width: 100%;
-  background-color: red;
+  
+  .jumbo-logo {
+    @include centeredLogo;
+  }
 }
