@@ -1,6 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { fromEvent, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+import { fromEvent, Subject, Subscription } from 'rxjs';
+import { takeUntil, tap } from 'rxjs/operators';
+import { HomeService } from 'src/app/service/home.service';
 
 @Component({
   selector: 'app-welcome',
@@ -9,25 +11,40 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class WelcomeComponent implements OnInit, OnDestroy {
 
-  axis = new Subject();
-  axis$ = this.axis.asObservable();
+  
+  subscriptions =  new Subscription;
+  wheel$ = fromEvent(window, 'wheel')
+  
 
   
-  
-  constructor() { }
+  constructor(
+    private homeService: HomeService,
+    private  router: Router, 
+  ) { }
 
   ngOnInit(): void {
-    fromEvent(window, 'wheel').pipe(takeUntil(this.axis$))
-			.subscribe((e: Event) => {
-        if (e.deltaY <0) {
-          console.log('eccolo');
-          
+    const wheelSub$ = this.wheel$.pipe((
+      tap((e: Event) => {
+        if (e.deltaY < 0) {
+          //this.homeService.onSwipe()
+        this.homeService.onSwipe();  
         }
-      });
+      })
+    )).subscribe();
+
+      
+
+      this.subscriptions
+            .add(wheelSub$);
+  }
+
+
+  getYPosition(e: Event): number {
+    return (e.target as Element).scrollTop;
   }
   
   ngOnDestroy():void {
-    this.axis.next();
+   
   }
 
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
+import { StepsComponent } from './sections/steps/steps.component';
 import { WelcomeComponent } from './sections/welcome/welcome.component';
 
 const routes: Routes = [
@@ -14,9 +15,9 @@ const routes: Routes = [
         pathMatch: 'full'
       }, 
       {
-        path: '/steps-to-follow',
-        component: WelcomeComponent,// 
-        pathMatch: 'full'
+        path: 'steps-to-follow',
+        component: StepsComponent,// 
+        
       }, 
     ]
   }

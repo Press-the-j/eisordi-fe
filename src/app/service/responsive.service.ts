@@ -22,7 +22,6 @@ export class ResponsiveService {
   getSizeStatus(): Observable<any> {
     return this.screen.asObservable()
   }
-  
 
   checkResolution(): void {
     let size;

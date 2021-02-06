@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 import { fromEvent, Subject, Subscription } from 'rxjs';
+import { Location } from '@angular/common'; 
 import { ResponsiveService } from '../service/responsive.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HomeService } from '../service/home.service';
 
 @Component({
   selector: 'app-home',
@@ -10,34 +13,40 @@ import { ResponsiveService } from '../service/responsive.service';
 })
 export class HomeComponent implements OnInit {
 
-  
-  axis = new Subject();
-  axis$ = this.axis.asObservable();
-  
   screen$: string;
   subscriptions =  new Subscription;
   
   
   constructor(
-    private  responsiveService: ResponsiveService
-  ) { }
+    private  responsiveService: ResponsiveService,
+    private  route: ActivatedRoute,
+    private  router: Router, 
+    private  homeService: HomeService,
+    private  location: Location
+  ) { 
+    console.log(this.router.navigate(['steps-to-follow']));
+    const baseUrl = this.location
+    
+  }
 
   ngOnInit(): void {
     const screenSub$ = this.responsiveService.getSizeStatus().subscribe((size) => {
-      this.screen$=size;
-      console.log(size)
+              this.screen$=size;
+              console.log(size)
+            });
+
+    const onSwipeSub$ = this.homeService.listenSwipe().subscribe( () => {
+            console.log(this.router)
+            this.router.navigate(['welcome/steps-to-follow']);
     })
     
-
-    fromEvent(window, 'wheel').pipe(takeUntil(this.axis$))
-			.subscribe((e: Event) => {
-        if (e.deltaY <0) {
-          console.log('eccolo');
-          
-        }
-      });
     
-    this.subscriptions.add(screenSub$);
+    
+    this.subscriptions
+            .add(screenSub$)
+            .add(onSwipeSub$);
+           
+
     this.responsiveService.checkResolution();
     
   }
@@ -48,7 +57,6 @@ export class HomeComponent implements OnInit {
 
 
   ngOnDestroy(): void {
-    this.axis.next();
     this.subscriptions.unsubscribe()
   }
 
