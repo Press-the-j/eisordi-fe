@@ -1,10 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  HostBinding  } from '@angular/core';
 import { takeUntil, tap } from 'rxjs/operators';
 import { fromEvent, Subject, Subscription } from 'rxjs';
 import { Location } from '@angular/common'; 
-import { ResponsiveService } from '../service/responsive.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { HomeService } from '../service/home.service';
+import { ResponsiveService } from '../services/responsive.service';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { HomeService } from '../services/home.service';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+}from '@angular/animations';
 
 @Component({
   selector: 'app-home',
@@ -24,9 +31,12 @@ export class HomeComponent implements OnInit {
     private  homeService: HomeService,
     private  location: Location
   ) { 
-    console.log(this.router.navigate(['steps-to-follow']));
-    const baseUrl = this.location
     
+    
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
 
   ngOnInit(): void {
@@ -34,19 +44,9 @@ export class HomeComponent implements OnInit {
               this.screen$=size;
               console.log(size)
             });
-
-    const onSwipeSub$ = this.homeService.listenSwipe().subscribe( () => {
-            console.log(this.router)
-            this.router.navigate(['welcome/steps-to-follow']);
-    })
-    
-    
     
     this.subscriptions
-            .add(screenSub$)
-            .add(onSwipeSub$);
-           
-
+            .add(screenSub$);
     this.responsiveService.checkResolution();
     
   }

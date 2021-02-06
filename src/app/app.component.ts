@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 /* SERVICES */
-import { ResponsiveService } from './service/responsive.service';
+import { ResponsiveService } from './services/responsive.service';
 /* CONSTANTS */
 /* RXJSß */
 import { Observable } from 'rxjs';

@@ -12,12 +12,12 @@ const routes: Routes = [
       {
         path: '',
         component: WelcomeComponent,// 
-        pathMatch: 'full'
+        data: {animation: 'welcome'}
       }, 
       {
         path: 'steps-to-follow',
         component: StepsComponent,// 
-        
+        data: {animation: 'steps-to-follow'}
       }, 
     ]
   }

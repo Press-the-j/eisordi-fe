@@ -8,8 +8,13 @@ import { WelcomeComponent } from './sections/welcome/welcome.component';
 import { StepsComponent } from './sections/steps/steps.component';
 
 
+
 @NgModule({
-  declarations: [JumbotronComponent, HomeComponent, WelcomeComponent, StepsComponent],
+  declarations: [
+    JumbotronComponent, 
+    HomeComponent, 
+    WelcomeComponent, 
+    StepsComponent],
   imports: [
     CommonModule,
     HomeRoutingModule
