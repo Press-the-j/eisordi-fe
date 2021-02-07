@@ -12,11 +12,16 @@ import {
   animate,
   transition,
 }from '@angular/animations';
+import { slideInAnimation } from './components/animations/slide-in-animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    // animation triggers go here
+    slideInAnimation
+  ]
 })
 export class HomeComponent implements OnInit {
 
@@ -44,9 +49,17 @@ export class HomeComponent implements OnInit {
               this.screen$=size;
               console.log(size)
             });
+
+    const locationSub$ = this.homeService.streamLocation().pipe(
+      tap((path) => {
+        this.router.navigate([path])
+      })
+    ).subscribe()
     
     this.subscriptions
-            .add(screenSub$);
+            .add(screenSub$)
+            .add(locationSub$);
+    
     this.responsiveService.checkResolution();
     
   }
@@ -59,5 +72,7 @@ export class HomeComponent implements OnInit {
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe()
   }
+
+  
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Map } from '../models/map';
 
 @Injectable({
@@ -21,6 +21,8 @@ export class HomeService {
     }
 
   ]
+
+  path: BehaviorSubject<string> = new BehaviorSubject(''); 
   
   constructor(
     private router: Router,
@@ -33,7 +35,6 @@ export class HomeService {
     } else {
       this.changeLocation(currIndex, 'down' );
     }
-    
   }
 
   changeLocation(i: number, direction: string): void  {
@@ -48,14 +49,17 @@ export class HomeService {
       return
     } 
 
-    this.map=[...newMap]
-    const path = this.findNewLocation()
-   
-    
-    this.router.navigate([path]);
+    this.map=[...newMap];
+    const newPath = this.newLocation();
+
+    this.path.next(newPath);
   }
 
-  findNewLocation(): string {
+  streamLocation(): Observable<string> {
+    return this.path.asObservable();
+  }
+
+  newLocation(): string {
     const i = this.findActive()
     return this.map[i].path
   }
