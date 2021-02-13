@@ -1,6 +1,6 @@
 import { Component, OnInit,  HostBinding  } from '@angular/core';
 import { takeUntil, tap } from 'rxjs/operators';
-import { fromEvent, Subject, Subscription } from 'rxjs';
+import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
 import { Location } from '@angular/common'; 
 import { ResponsiveService } from '../services/responsive.service';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
@@ -26,6 +26,7 @@ import { slideInAnimation } from './components/animations/slide-in-animations';
 export class HomeComponent implements OnInit {
 
   screen$: string;
+  locationChange$: Observable<string>; 
   subscriptions =  new Subscription;
   
   
@@ -45,16 +46,18 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const screenSub$ = this.responsiveService.getSizeStatus().subscribe((size) => {
-              this.screen$=size;
-              console.log(size)
-            });
+    const screenSub$ = this.responsiveService.getSizeStatus().pipe(
+      tap((size) => {
+        this.screen$=size;
+        console.log(size)
+      })
+    ).subscribe();
 
     const locationSub$ = this.homeService.streamLocation().pipe(
       tap((path) => {
-        this.router.navigate([path])
+        console.log(path)
       })
-    ).subscribe()
+    ).subscribe();
     
     this.subscriptions
             .add(screenSub$)
