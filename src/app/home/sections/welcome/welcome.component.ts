@@ -29,6 +29,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
         this.homeService.onSwipe(e.deltaY);  
       })
     ).subscribe();
+    
     const touch$ = this.touch$.pipe(
       tap(e => console.log(e, 'touch'))
     ).subscribe()

@@ -56,6 +56,7 @@ export class HomeComponent implements OnInit {
     const locationSub$ = this.homeService.streamLocation().pipe(
       tap((path) => {
         console.log(path)
+        this.router.navigateByUrl(path)
       })
     ).subscribe();
     

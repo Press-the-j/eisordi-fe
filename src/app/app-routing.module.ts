@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
   },
   {
+    path: 'manifesto',
+    loadChildren: () => import('./manifest/manifest.module').then(m => m.ManifestModule),
+  },
+  {
     path: '**', 
     redirectTo: 'welcome' 
   }
