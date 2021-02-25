@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
+
+$font-text: 'Source Sans Pro', sans-serif;
+
+$font-size: (
+  default: 16px,
+  mb: .85rem,
+  tb: 1rem,
+  lg: 1.2rem,
+  article: 1.1rem,
+);
+
+
+
+$header-bar: (
+  height: 94px,
+);
+
+$padding: (
+  standard: 0.85rem,
+)

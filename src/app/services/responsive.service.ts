@@ -1,14 +1,15 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { ScreenConstant } from '../constants/screen-constant'
+import { ScreenConstants } from '../../assets/constants/screen-constants'
 
 
 @Injectable()
 export class ResponsiveService {
   
-  private screen = new Subject<string>();
-  readonly screenConst = ScreenConstant
+  readonly screenConst = ScreenConstants
+  
+  screen = new Subject<string>();
 
   constructor()  
   {

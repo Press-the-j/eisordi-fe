@@ -1,0 +1,38 @@
+@import './mixin.scss';
+@import './variables.scss';
+
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* html {
+  height: -webkit-fill-available;
+} */
+
+/* ----LAYOUT------- */
+.container {
+  padding-top: map-get(
+    $map: $header-bar,
+    $key: height
+  );
+}
+/* ----------------- */
+/* ----ARTICLE------ */
+.wrap-article {
+  height: calc(100vh - map-get($map: $header-bar,$key:height));
+  @include breakWord;
+  padding: map-get(
+    $map:$padding,
+    $key:standard
+  );
+  font-size: map-get(
+    $map:$font-size, 
+    $key:article 
+  );
+  font-family: $font-text;
+  max-width: 700px;
+  margin: auto;
+  }
+/* ----------------- */
+

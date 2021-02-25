@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ReaderService } from 'src/app/services/reader.service.js';
+
+import { TemplateConstants } from '../../../../assets/constants/template-constants.js'
 
 @Component({
   selector: 'app-reader',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReaderComponent implements OnInit {
 
-  constructor() { }
+  
+  /* readonly templateConstant = new TemplateConstant
+  
+  template$: Observable<any>; //todo tipizza template
+ */
+  constructor(
+    private readerService: ReaderService
+  ) { }
 
   ngOnInit(): void {
+    
   }
+
+  
 
 }

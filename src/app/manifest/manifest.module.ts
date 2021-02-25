@@ -3,15 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { ManifestRoutingModule } from './manifest-routing.module';
 import { ManifestComponent } from './manifest.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { ReaderComponent } from '../shared/components/reader/reader.component';
+import { LayoutModule } from '../shared/layout.module';
+/* import { ReaderComponent } from '../shared/components/reader/reader.component';
 
-
+const COMPONENTS = [
+  ReaderComponent,
+  HeaderBarComponent
+] */
 
 @NgModule({
   declarations: [
     ManifestComponent,
-    ReaderComponent
   ],
   imports: [
     CommonModule,

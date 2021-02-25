@@ -15,6 +15,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 /* ENV */
 import { environment } from '../environments/environment';
+import { LayoutModule } from './shared/layout.module';
 
 
 
@@ -27,6 +28,7 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     NoopAnimationsModule,
     MaterialModule,
+    LayoutModule,
     StoreDevtoolsModule.instrument({
       maxAge: 5
     })

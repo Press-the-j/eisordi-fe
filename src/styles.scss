@@ -1,13 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~normalize.css';
+/* @import '~normalize.css'; */
+@import './app/shared/styles/variables.scss';
+@import './app/shared/styles/mixin.scss';
+@import './app/shared/styles/base.scss';
 
 
-body {
-  min-height: 100vh;
-  /* mobile viewport bug fix */
-  min-height: -webkit-fill-available;
-}
-
-html {
-  height: -webkit-fill-available;
-}
