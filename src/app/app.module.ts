@@ -16,6 +16,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 /* ENV */
 import { environment } from '../environments/environment';
 import { LayoutModule } from './shared/layout.module';
+import { ArticlesReducer } from './store/articles/articles.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { ArticlesEffects } from './store/articles/articles.effects';
 
 
 
@@ -29,9 +32,14 @@ import { LayoutModule } from './shared/layout.module';
     NoopAnimationsModule,
     MaterialModule,
     LayoutModule,
+    StoreModule.forRoot({}),
+    StoreModule.forFeature('articlesState', ArticlesReducer),
+    EffectsModule.forRoot([
+      ArticlesEffects
+    ]),
     StoreDevtoolsModule.instrument({
-      maxAge: 5
-    })
+      maxAge: 25, // Retains last 25 states
+    }),
   ],
   providers: [ResponsiveService],
   bootstrap: [AppComponent]

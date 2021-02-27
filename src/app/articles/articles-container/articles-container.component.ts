@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticlesService } from 'src/app/serivices/articles.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { ArticlesService } from 'src/app/services/articles.service';
+import { articles } from 'src/app/store/articles/articles.selectors';
 
 @Component({
   selector: 'app-articles-container',
@@ -8,14 +11,16 @@ import { ArticlesService } from 'src/app/serivices/articles.service';
 })
 export class ArticlesContainerComponent implements OnInit {
 
-  articles; 
+  articles$: Observable<object[]>; //todo tipizza article
 
   constructor(
-    private articlesService: ArticlesService
+    private articlesService: ArticlesService,
+    private store: Store
   ) { }
-
+  
   ngOnInit(): void {
     //todo prendo carico gli articoli da vedere dallo store
+    this.articles$ = this.store.select(articles)
   }
 
   getArticles() {

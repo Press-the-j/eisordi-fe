@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./manifest/manifest.module').then(m => m.ManifestModule),
   },
   {
+    path: 'articoli',
+    loadChildren: () => import('./articles/articles.module').then(m => m.ArticlesModule),
+  },
+  {
     path: '**', 
     redirectTo: 'welcome' 
   }

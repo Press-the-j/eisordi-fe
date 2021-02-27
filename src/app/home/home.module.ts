@@ -6,6 +6,7 @@ import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 import { HomeComponent } from './home.component';
 import { WelcomeComponent } from './sections/welcome/welcome.component';
 import { StepsComponent } from './sections/steps/steps.component';
+import { HomeService } from '../services/home.service';
 
 const COMPONENTS = [
   JumbotronComponent, 
@@ -22,6 +23,9 @@ const COMPONENTS = [
     CommonModule,
     HomeRoutingModule,
     LayoutModule
+  ],
+  providers: [
+    HomeService,
   ]
 })
 export class HomeModule { }
