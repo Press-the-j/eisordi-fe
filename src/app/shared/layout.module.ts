@@ -8,6 +8,7 @@ import {
   HeaderBarComponent,
   ArticleComponent,
   ArticleCardComponent,
+  SpinnerComponent,
 } from './components';
 
 import {
@@ -23,6 +24,7 @@ const COMPONENTS = [
   HeaderBarComponent,
   ArticleComponent,
   ArticleCardComponent,
+  SpinnerComponent,
 ]
 
 @NgModule({

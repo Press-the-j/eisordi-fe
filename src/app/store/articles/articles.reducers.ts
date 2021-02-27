@@ -7,7 +7,8 @@ export function ArticlesReducer(state = initialState, action: All): ArticlesStat
       let articles = action.payload.map(article => article)
       return {
         ...state,
-        articles: [...articles]
+        articles: [...articles],
+        isLoad: true,
       };
     }
     default: {

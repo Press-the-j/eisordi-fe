@@ -10,14 +10,24 @@
 };
 
 @mixin breakWord {
-    /* These are technically the same, but use both */
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    /* Instead use this non-standard one: */
-    word-break: break-word;
-    /* Adds a hyphen where the word breaks, if supported (No Blink) */
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+@mixin overlay($color) {
+  position: fixed;
+  top:0;
+  left:0;
+  min-width:100vw;
+  min-height: 100vh;
+  background-color: $color;
+  z-index: 99999;
 }

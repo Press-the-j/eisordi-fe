@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ArticlesService } from 'src/app/services/articles.service';
-import { articles } from 'src/app/store/articles/articles.selectors';
+import { getArticles } from 'src/app/store/articles/articles.selectors';
 
 @Component({
   selector: 'app-articles-container',
@@ -20,7 +20,7 @@ export class ArticlesContainerComponent implements OnInit {
   
   ngOnInit(): void {
     //todo prendo carico gli articoli da vedere dallo store
-    this.articles$ = this.store.select(articles)
+    this.articles$ = this.store.select(getArticles)
   }
 
   getArticles() {

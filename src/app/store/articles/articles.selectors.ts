@@ -5,7 +5,7 @@ import { ArticlesState } from './articles.states';
 export const getArticlesState = createFeatureSelector<ArticlesState>('articlesState');
 
 
-export const articles = createSelector(
+export const getArticles = createSelector(
   getArticlesState,
   (feature: ArticlesState) => !!feature.articles && feature.articles || null
 );

@@ -1,0 +1,6 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.wrap-spinner {
+  @include overlay($primary)
+}
