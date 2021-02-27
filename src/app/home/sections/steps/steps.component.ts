@@ -12,7 +12,9 @@ import { HomeService } from 'src/app/services/home.service';
 export class StepsComponent implements OnInit {
   
   subscriptions =  new Subscription;
+
   wheel$ = fromEvent(window, 'wheel')
+  
   
 
   
@@ -40,6 +42,7 @@ export class StepsComponent implements OnInit {
   }
   
   ngOnDestroy():void {
+
     this.subscriptions.unsubscribe();
   }
 

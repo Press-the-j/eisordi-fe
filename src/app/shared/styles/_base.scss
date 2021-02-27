@@ -20,8 +20,8 @@ body {
 /* ----------------- */
 /* ----ARTICLE------ */
 .wrap-article {
-  height: calc(100vh - map-get($map: $header-bar,$key:height));
   @include breakWord;
+  height: calc(100vh - map-get($map: $header-bar,$key:height));
   padding: map-get(
     $map:$padding,
     $key:standard

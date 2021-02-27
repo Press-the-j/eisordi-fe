@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material.module';
+import { RouterModule } from '@angular/router';
 
 import { 
   ReaderComponent,
   HeaderBarComponent,
-  ArticleComponent
+  ArticleComponent,
+  ArticleCardComponent,
 } from './components';
 
 import {
@@ -19,13 +21,15 @@ const TEMPLATES = [
 const COMPONENTS = [
   ReaderComponent,
   HeaderBarComponent,
-  ArticleComponent
+  ArticleComponent,
+  ArticleCardComponent,
 ]
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
+    RouterModule
   ],
   exports: [
     MaterialModule,
