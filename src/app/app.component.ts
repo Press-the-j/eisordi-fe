@@ -44,7 +44,7 @@ export class AppComponent implements OnInit{
       this.store.select<boolean>(isLoadArticles)
     ]).pipe(
       tap(([b$]) => {
-        console.log('caricati' , b$);  
+        console.log('caricati articoli' , b$);  
       }),
       debounceTime(2500),
       tap(() => 
