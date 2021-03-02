@@ -25,14 +25,13 @@ export class AppComponent implements OnInit{
   constructor(
     private responsiveService: ResponsiveService,
     private store: Store,
-    private spinnerService: SpinnerService,
+    public spinnerService: SpinnerService,
   ) {
 
   }
 
   ngOnInit() {
     /* Check Resolution of Screen */
-    this.spinnerService.load(true)
     this.store.dispatch(new LoadArticles()),
 
     this.responsiveService.getSizeStatus().subscribe( (size) => {
@@ -44,12 +43,8 @@ export class AppComponent implements OnInit{
       this.store.select<boolean>(isLoadArticles)
     ]).pipe(
       tap(([b$]) => {
-        console.log('caricati articoli' , b$);  
+        
       }),
-      debounceTime(2500),
-      tap(() => 
-        this.spinnerService.load(false)
-      )
     ).subscribe()
 
     this.subscriptions.add(loadConfigs$)

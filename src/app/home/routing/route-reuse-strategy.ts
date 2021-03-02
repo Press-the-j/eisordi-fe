@@ -11,7 +11,6 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
   }
 
   store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle): void {
-    console.log(this.handlers);
     
     this.handlers[route.routeConfig.path] = null;
   }

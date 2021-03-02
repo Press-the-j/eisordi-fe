@@ -14,7 +14,7 @@ export class ReaderComponent implements OnInit {
   
   /* readonly templateConstant = new TemplateConstant
   
-  template$: Observable<any>; //todo tipizza template
+  template$: Observable<any>; //$ tipizza template
  */
   constructor(
     private readerService: ReaderService

@@ -1,3 +1,6 @@
-.articles-grid {
-  display: grid;
+.articles-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }

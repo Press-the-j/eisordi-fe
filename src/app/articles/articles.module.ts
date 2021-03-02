@@ -6,16 +6,19 @@ import { ArticlesRoutingModule } from './articles-routing.module';
 import { ArticlesComponent } from './articles.component';
 import { ArticlesContainerComponent } from './articles-container/articles-container.component';
 import { ArticlesService } from '../services/articles.service';
+import { ArticleCardComponent } from './articles-container/article-card/article-card.component';
+import { ArticlesTopComponent } from './articles-container/articles-top/articles-top.component'
 
 const COMPONENTS = [
   ArticlesComponent,
-  ArticlesContainerComponent
+  ArticlesContainerComponent,
+  ArticleCardComponent,
+  ArticlesTopComponent
 ]
 
 @NgModule({
   declarations: [
     ...COMPONENTS,
-    
   ],  
   imports: [
     CommonModule,

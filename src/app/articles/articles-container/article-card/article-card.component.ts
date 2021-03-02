@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-article-card',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleCardComponent implements OnInit {
 
+  @Input() article_item: object; //$ tipizza article
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log("article item in article card: ", this.article_item);
   }
 
 }

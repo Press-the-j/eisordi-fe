@@ -7,7 +7,6 @@ import {
   ReaderComponent,
   HeaderBarComponent,
   ArticleComponent,
-  ArticleCardComponent,
   SpinnerComponent,
 } from './components';
 
@@ -23,7 +22,6 @@ const COMPONENTS = [
   ReaderComponent,
   HeaderBarComponent,
   ArticleComponent,
-  ArticleCardComponent,
   SpinnerComponent,
 ]
 

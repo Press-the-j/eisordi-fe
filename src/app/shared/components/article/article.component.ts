@@ -9,13 +9,14 @@ import { TemplateConstants } from '../../../../assets/constants/template-constan
 })
 export class ArticleComponent implements OnInit {
 
-  @Input() template: string //todo tipizza template
+  @Input() template: string //$ tipizza template
 
   readonly templateConstants = TemplateConstants
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

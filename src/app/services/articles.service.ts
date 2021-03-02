@@ -10,15 +10,15 @@ export class ArticlesService {
 
   loadArticles(): Observable<object[]> {
     //this.http.loadArticles
-    const mock = [
+    const mockArticles = [
       {'title': 1},
       {'title': 1},
       {'title': 1},
       {'title': 1},
       {'title': 1},
     ]
-    console.log('mock:' , mock);
+    console.log('mockArticles:' , mockArticles);
     
-    return of(mock)
+    return of(mockArticles)
   }
 }

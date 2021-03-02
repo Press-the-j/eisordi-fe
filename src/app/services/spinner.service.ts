@@ -29,7 +29,6 @@ export class SpinnerService {
   }
 
   load(loading: boolean) {
-    console.log(`[SPINNER LOAD] ${loading}`);
     this.isLoading$$.next(loading);
   } 
 }

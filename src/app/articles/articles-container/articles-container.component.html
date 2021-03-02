@@ -1,10 +1,7 @@
-<p>articles-container works!</p>
-
-<!-- <ng-container *ngIf='(articles$ | async) as articles; let articles'>
-  <div class="articles-grid">
-    <ng-container *ngFor="let article of articles" >
-      <app-articles-card [article]='article' ></app-articles-card>
-    </ng-container>
+<app-articles-top [articles_top]="articles_top$ | async"></app-articles-top>
+<ng-container *ngIf='(articles$ | async) as articles'>
+  <div class="articles-container">
+      <app-article-card *ngFor="let article of articles" [article_item]='article'></app-article-card>
   </div>
-</ng-container> -->
+</ng-container>
 

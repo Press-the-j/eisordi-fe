@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { ArticlesService } from 'src/app/services/articles.service';
-import { getArticles } from 'src/app/store/articles/articles.selectors';
+import { getArticles, getArticlesTop } from 'src/app/store/articles/articles.selectors';
 
 @Component({
   selector: 'app-articles-container',
@@ -11,20 +12,28 @@ import { getArticles } from 'src/app/store/articles/articles.selectors';
 })
 export class ArticlesContainerComponent implements OnInit {
 
-  articles$: Observable<object[]>; //todo tipizza article
+  articles$: Observable<object[]>; //$ tipizza article
+  articles_top$:Observable<object>;
 
   constructor(
-    private articlesService: ArticlesService,
+    public articlesService: ArticlesService,
     private store: Store
   ) { }
   
   ngOnInit(): void {
-    //todo prendo carico gli articoli da vedere dallo store
-    this.articles$ = this.store.select(getArticles)
+    //$ prendo carico gli articoli da vedere dallo store
+    this.articles$ = this.store.select(getArticles).pipe(
+      tap((articles)=>{console.log('articles',articles);
+      })
+    )
+
+    this.articles_top$ = this.store.select(getArticlesTop).pipe(
+      tap((articlesTop) => console.log('articlesTop',articlesTop))
+    )
   }
 
-  getArticles() {
-    //todo funzione di richiamo degli articoli dallo store in  base ad un index
+  loadArticles() {
+    //$ funzione di richiamo degli articoli dallo store in  base ad un index
   }
 
 

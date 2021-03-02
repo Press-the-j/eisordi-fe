@@ -10,7 +10,7 @@ export class ReaderService {
 
   readonly templateConstant = new TemplateConstants
 
-  template$ = new BehaviorSubject<string>('') //todo tipizza template
+  template$ = new BehaviorSubject<string>('') //$ tipizza template
 
   constructor() { }
 
