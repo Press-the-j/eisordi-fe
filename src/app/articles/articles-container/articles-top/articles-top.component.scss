@@ -1,0 +1,11 @@
+@import '../../../shared/styles/variables';
+
+.wrap-articles-top{
+  height: 100vh;
+  width: 100vw;
+
+  .articles-top{
+    width: 100%;
+    height: 100%;
+  }
+}

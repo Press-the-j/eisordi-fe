@@ -4,7 +4,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { switchMap, map, catchError, tap, finalize } from 'rxjs/operators';
-import { ArticlesActionsTypes, LoadArticles, LoadArticlesSuccess } from './articles.actions';
+import { ArticlesActionsTypes, LoadArticles, LoadArticlesFailure, LoadArticlesSuccess, LoadArticlesTop, ReduceArticlesAll, ReduceArticlesTop } from './articles.actions';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { LogService } from 'src/app/services/dev/log.service';
 
@@ -26,15 +26,40 @@ export class ArticlesEffects {
             switchMap((action: LoadArticles) => {
               return this.articlesService.loadArticles().pipe(
                 map((response)=>{
-                  this.logService.logThis(response);
-                  return new LoadArticlesSuccess(response);
-                  
+                  this.logService.logThis("loadArticles:",response);
+                  return new ReduceArticlesAll(response);
                 }),
-                /* catchError(() => {
+                catchError((error) => {
                   return of(new LoadArticlesFailure(error));
-                }) */
+                }),
               )
-            })
+            }),
+          );
+    @Effect()
+    LoadArticlesTop: Observable<any> = this.actions$
+          .pipe(
+            ofType(ArticlesActionsTypes.LOAD_ARTICLES_TOP),
+            switchMap((action: LoadArticlesTop)=>{
+              return this.articlesService.loadArticlesTop().pipe(
+                map((response)=>{
+                  this.logService.logThis("loadArticlesTop:",response);
+                  return new ReduceArticlesTop(response);
+                }),
+                catchError((error) => {
+                  return of(new LoadArticlesFailure(error));
+                })
+              )
+            }),
           );
     
+    @Effect()
+    LoadArticlesFailure: Observable<any> = this.actions$
+          .pipe(
+            ofType(ArticlesActionsTypes.LOAD_ARTICLES_FAILURE),
+            map((error)=>{
+              this.logService.logThis("error", error)
+            })
+  
+            
+          );
 }

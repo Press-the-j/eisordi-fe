@@ -7,8 +7,8 @@ import { combineLatest, concat, Observable, Subscription } from 'rxjs';
 import { combineAll, debounce, debounceTime, map, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 /* STORE */
-import { LoadArticles } from './store/articles/articles.actions';
-import { isLoadArticles } from './store/articles/articles.selectors';
+import { LoadArticles, LoadArticlesTop } from './store/articles/articles.actions';
+import { isLoadArticlesAll, isLoadArticlesTop } from './store/articles/articles.selectors';
 import { SpinnerService } from './services/spinner.service';
 
 @Component({
@@ -33,6 +33,7 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     /* Check Resolution of Screen */
     this.store.dispatch(new LoadArticles()),
+    this.store.dispatch(new LoadArticlesTop()),
 
     this.responsiveService.getSizeStatus().subscribe( (size) => {
       this.screen$ = size
@@ -40,9 +41,12 @@ export class AppComponent implements OnInit{
     this.onResize()
 
     const loadConfigs$ = combineLatest([
-      this.store.select<boolean>(isLoadArticles)
+      this.store.select<boolean>(isLoadArticlesAll),
+      this.store.select<boolean>(isLoadArticlesTop)
     ]).pipe(
-      tap(([b$]) => {
+      tap(([articlesAll$, articlesTop$]) => {
+        console.log("ALL: " , articlesAll$);
+        console.log("TOP: " , articlesTop$);
         
       }),
     ).subscribe()

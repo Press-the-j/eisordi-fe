@@ -4,6 +4,15 @@ import { ArticlesState } from './articles.states';
 
 export const getArticlesState = createFeatureSelector<ArticlesState>('articlesState');
 
+export const isLoadArticlesAll = createSelector(
+  getArticlesState,
+  (feature: ArticlesState) => !!feature.isLoadAll && feature.isLoadAll || null
+)
+
+export const isLoadArticlesTop = createSelector(
+  getArticlesState,
+  (feature: ArticlesState) => !!feature.isLoadTop && feature.isLoadTop || null
+)
 
 export const getArticles = createSelector(
   getArticlesState,
@@ -16,7 +25,3 @@ export const getArticlesTop = createSelector(
 );
 
 
-export const isLoadArticles = createSelector(
-  getArticlesState,
-  (feature: ArticlesState) => !!feature.isLoad && feature.isLoad || null
-)

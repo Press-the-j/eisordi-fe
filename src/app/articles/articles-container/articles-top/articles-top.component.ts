@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ArticlesTopComponent implements OnInit {
 
-  @Input() articles_top: object;
+  @Input() articles_top: object[];
 
   constructor() { }
 

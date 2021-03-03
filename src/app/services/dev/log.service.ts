@@ -7,8 +7,8 @@ export class LogService {
 
   constructor() { }
 
-  logThis(payload) {
-    console.log(payload);
+  logThis(message,payload) {
+    console.log(message, payload);
     
   }
 }
