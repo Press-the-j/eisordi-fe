@@ -29,10 +29,12 @@ export class HomeService {
   ) { }
 
   onSwipe(delta: number) {
-    const currIndex = this.findActive() 
-    if (delta > 0) {
-      this.changeLocation(currIndex, 'up' );
-    } else {
+    const currIndex = this.findActive()
+     
+    if (delta < -15) {
+      this.changeLocation(currIndex, 'up' )
+      ;
+    } else if(delta > 15){
       this.changeLocation(currIndex, 'down' );
     }
   }
