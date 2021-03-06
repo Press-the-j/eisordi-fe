@@ -1,7 +1,7 @@
 <app-articles-top [articles_top]="articles_top$ | async"></app-articles-top>
 <ng-container *ngIf='(articles$ | async) as articles'>
   <div class="articles-container">
-      <app-article-card *ngFor="let article of articles"  [article_item]='article'></app-article-card>
+      <app-article-card *ngFor="let article of articles" [article_item]='article'></app-article-card>
   </div>
 </ng-container>
 
