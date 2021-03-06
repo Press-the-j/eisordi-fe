@@ -20,7 +20,7 @@ $padding-article-card: 0.85em;
   transition: all 2s ease-in-out;
 
   &.is-open {
-    height: 300px;
+    min-height: 300px;
     top: $padding-article-card;
     left:$padding-article-card;
     max-width: 94%;
@@ -34,14 +34,15 @@ $padding-article-card: 0.85em;
 
 @keyframes openCard {
   0% {
-    height: 300px;
+    min-height: 300px;
     top: $padding-article-card;
-    left: -50px;
+    left: $padding-article-card;
+    right: $padding-article-card;
     max-width: none;
     min-width: 94%;
   }
   25% {
-    height: 300px;
+    min-height: 300px;
     top: $padding-article-card;
     left: -50px;
     right: -100em;
@@ -49,20 +50,20 @@ $padding-article-card: 0.85em;
     min-width: 94%;
   }
   50% {
-    height: 300px;
-    top: $padding-article-card;
+    min-height: 900px;
+    top: -100%;
     left: -50px;
     right: -100em;
     max-width: none;
     min-width: 94%;
   }
   75% {
-    height: 900px;
-    top: 0
+    min-height: 900px;
+    top: -100%;
   }
   100% {
-    
-    top: 0;
+    min-height: 900px;
+    top: -100%;
     left: -50px;
     right: -100em;
     max-width: none;
