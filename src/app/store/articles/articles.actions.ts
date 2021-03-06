@@ -25,10 +25,6 @@ export class ReduceArticlesTop implements Action {
   readonly type = ArticlesActionsTypes.REDUCE_ARTICLES_TOP;
   constructor(public payload: any) { }
 }
-export class LoadArticlesSuccess implements Action {
-  readonly type = ArticlesActionsTypes.LOAD_ARTICLES_SUCCESS;
-  constructor() { }
-}
 export class LoadArticlesFailure implements Action {
   readonly type = ArticlesActionsTypes.LOAD_ARTICLES_FAILURE;
   constructor(public payload: any) { }
@@ -40,4 +36,3 @@ export type All =
     | ReduceArticlesAll
     | ReduceArticlesTop
     | LoadArticlesFailure
-    | LoadArticlesSuccess; 

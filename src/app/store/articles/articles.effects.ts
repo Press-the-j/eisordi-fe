@@ -4,7 +4,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { switchMap, map, catchError, tap, finalize } from 'rxjs/operators';
-import { ArticlesActionsTypes, LoadArticles, LoadArticlesFailure, LoadArticlesSuccess, LoadArticlesTop, ReduceArticlesAll, ReduceArticlesTop } from './articles.actions';
+import { ArticlesActionsTypes, LoadArticles, LoadArticlesFailure, LoadArticlesTop, ReduceArticlesAll, ReduceArticlesTop } from './articles.actions';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { LogService } from 'src/app/services/dev/log.service';
 
@@ -26,7 +26,7 @@ export class ArticlesEffects {
             switchMap((action: LoadArticles) => {
               return this.articlesService.loadArticles().pipe(
                 map((response)=>{
-                  this.logService.logThis("loadArticles:",response);
+                  this.logService.logThis("loadArticlesAll:",response);
                   return new ReduceArticlesAll(response);
                 }),
                 catchError((error) => {

@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
     const screenSub$ = this.responsiveService.getSizeStatus().pipe(
       tap((size) => {
         this.screen$=size;
-        console.log(size)
+        //console.log(size)
       })
     ).subscribe();
 

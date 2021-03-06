@@ -4,7 +4,7 @@ import { ResponsiveService } from './services/responsive.service';
 /* CONSTANTS */
 /* RXJS */
 import { combineLatest, concat, Observable, Subscription } from 'rxjs';
-import { combineAll, debounce, debounceTime, map, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 /* STORE */
 import { LoadArticles, LoadArticlesTop } from './store/articles/articles.actions';
@@ -32,21 +32,21 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     /* Check Resolution of Screen */
-    this.store.dispatch(new LoadArticles()),
-    this.store.dispatch(new LoadArticlesTop()),
+    this.store.dispatch(new LoadArticles());
+    this.store.dispatch(new LoadArticlesTop());
+    this.onResize()
 
     this.responsiveService.getSizeStatus().subscribe( (size) => {
       this.screen$ = size
     })
-    this.onResize()
-
+    
     const loadConfigs$ = combineLatest([
       this.store.select<boolean>(isLoadArticlesAll),
       this.store.select<boolean>(isLoadArticlesTop)
     ]).pipe(
       tap(([articlesAll$, articlesTop$]) => {
-        console.log("ALL: " , articlesAll$);
-        console.log("TOP: " , articlesTop$);
+        /* console.log("ALL: " , articlesAll$);
+        console.log("TOP: " , articlesTop$); */
         
       }),
     ).subscribe()

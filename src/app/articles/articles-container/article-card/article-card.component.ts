@@ -12,7 +12,7 @@ export class ArticleCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("article item in article card: ", this.article_item);
-  }
+/*     console.log("article item in article card: ", this.article_item);
+ */  }
 
 }

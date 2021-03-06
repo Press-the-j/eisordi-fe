@@ -1,7 +1,7 @@
 
 export interface ArticlesState {
   articles: object[] | null; //$ tipizza article
-  articles_top: object | null;
+  articles_top: object[] | null; //$ tipizza article
   isLoadAll: boolean;
   isLoadTop: boolean;
 }

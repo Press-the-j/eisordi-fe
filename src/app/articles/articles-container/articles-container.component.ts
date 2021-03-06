@@ -13,7 +13,7 @@ import { getArticles, getArticlesTop } from 'src/app/store/articles/articles.sel
 export class ArticlesContainerComponent implements OnInit {
 
   articles$: Observable<object[]>; //$ tipizza article
-  articles_top$:Observable<object>;
+  articles_top$:Observable<object[]>; //$ {type} = Article
 
   constructor(
     public articlesService: ArticlesService,
@@ -21,14 +21,15 @@ export class ArticlesContainerComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
-    //$ prendo carico gli articoli da vedere dallo store
+    //$ carico gli articoli da vedere dallo store
     this.articles$ = this.store.select(getArticles).pipe(
-      tap((articles)=>{console.log('articles',articles);
-      })
+      /* tap((articles)=>{
+        console.log('articles',articles);
+      }) */
     )
 
     this.articles_top$ = this.store.select(getArticlesTop).pipe(
-      tap((articlesTop) => console.log('articlesTop',articlesTop))
+      /* tap((articlesTop) => console.log('articlesTop',articlesTop)) */
     )
   }
 

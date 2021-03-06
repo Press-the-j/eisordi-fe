@@ -12,7 +12,7 @@ export class ManifestTemplateComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('manifest template');
+    //console.log('manifest template');
     
   }
 

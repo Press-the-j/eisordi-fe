@@ -12,13 +12,32 @@ export class ArticlesService {
   loadArticles(): Observable<any> {
     //this.http.get<Articles[]>
     const mockArticles = [
-      {'title': 1},
-      {'title': 1},
-      {'title': 1},
-      {'title': 1},
-      {'title': 1},
+      {
+        'id': '4',
+        'title': 'quarto articolo',
+        'article_img': 'assets/img/articles-img/article-1-img.jpg',
+        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore velit dolore vel temporibus animi! Dolores sunt error ipsa quis repudiandae, nulla delectus voluptatum non praesentium? Doloremque iste ipsam reprehenderit fugiat?'
+      },
+      {
+        'id': '5',
+        'title': 'quinto articolo',
+        'article_img': 'assets/img/articles-img/article-1-img.jpg',
+        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore velit dolore vel temporibus animi! Dolores sunt error ipsa quis repudiandae, nulla delectus voluptatum non praesentium? Doloremque iste ipsam reprehenderit fugiat?'
+      },
+      {
+        'id': '6',
+        'title': 'sesto articolo',
+        'article_img': 'assets/img/articles-img/article-1-img.jpg',
+        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore velit dolore vel temporibus animi! Dolores sunt error ipsa quis repudiandae, nulla delectus voluptatum non praesentium? Doloremque iste ipsam reprehenderit fugiat?'
+      },
+      {
+        'id': '7',
+        'title': 'settimo articolo',
+        'article_img': 'assets/img/articles-img/article-1-img.jpg',
+        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore velit dolore vel temporibus animi! Dolores sunt error ipsa quis repudiandae, nulla delectus voluptatum non praesentium? Doloremque iste ipsam reprehenderit fugiat?'
+      },
     ]
-    console.log('mockArticles:' , mockArticles);
+    //console.log('mockArticles:' , mockArticles);
     
     return of(mockArticles)
   }
@@ -27,14 +46,26 @@ export class ArticlesService {
     //this.http.get<Articles[]>
     const mockArticlesTop = [
       {
+        'id': '1',
         'title': 'primo articolo',
         'article_img': 'assets/img/articles-img/article-1-img.jpg',
         'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore velit dolore vel temporibus animi! Dolores sunt error ipsa quis repudiandae, nulla delectus voluptatum non praesentium? Doloremque iste ipsam reprehenderit fugiat?'
       },
-      {'title': 1},
-      {'title': 1},
+      {
+        'id': '2',
+        'title': 'secondo articolo',
+        'article_img': 'assets/img/articles-img/article-1-img.jpg',
+        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore velit dolore vel temporibus animi! Dolores sunt error ipsa quis repudiandae, nulla delectus voluptatum non praesentium? Doloremque iste ipsam reprehenderit fugiat?'
+      },
+      {
+        'id': '3',
+        'title': 'terzo articolo',
+        'article_img': 'assets/img/articles-img/article-1-img.jpg',
+        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore velit dolore vel temporibus animi! Dolores sunt error ipsa quis repudiandae, nulla delectus voluptatum non praesentium? Doloremque iste ipsam reprehenderit fugiat?'
+      },
+      
     ]
-    console.log('mockArticlesTop:' , mockArticlesTop);
+    //console.log('mockArticlesTop:' , mockArticlesTop);
     
     return of(mockArticlesTop)
     

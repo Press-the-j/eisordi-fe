@@ -1,9 +1,9 @@
 @import '../../../shared/styles/variables';
 
-$header-bar-height: map-get($map: $header-bar,$key: height);
+$header-bar-height: 94px;
 
 .wrap-articles-top{
-  height: calc(100vh - 94px);;
+  height: calc(100vh - 94px);
   width: 100vw;
 
   .articles-top{
