@@ -11,39 +11,7 @@ export class ArticlesService {
 
   loadArticles(): Observable<any> {
     //this.http.get<Articles[]>
-    const mockArticles = [
-      {
-        'id': '4',
-        'title': 'quarto articolo',
-        'article_img': 'assets/img/articles-img/article-1-img.jpg',
-        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore velit dolore vel temporibus animi! Dolores sunt error ipsa quis repudiandae, nulla delectus voluptatum non praesentium? Doloremque iste ipsam reprehenderit fugiat?',
-        'classCard': 'card-4',
-      },
-      {
-        'id': '5',
-        'title': 'quinto articolo',
-        'article_img': 'assets/img/articles-img/article-1-img.jpg',
-        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore velit dolore vel temporibus animi! Dolores sunt error ipsa quis repudiandae, nulla delectus voluptatum non praesentium? Doloremque iste ipsam reprehenderit fugiat?',
-        'classCard': 'card-5',
-      },
-      {
-        'id': '6',
-        'title': 'sesto articolo',
-        'article_img': 'assets/img/articles-img/article-1-img.jpg',
-        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore velit dolore vel temporibus animi! Dolores sunt error ipsa quis repudiandae, nulla delectus voluptatum non praesentium? Doloremque iste ipsam reprehenderit fugiat?',
-        'classCard': 'card-6',
-      },
-      {
-        'id': '7',
-        'title': 'settimo articolo',
-        'article_img': 'assets/img/articles-img/article-1-img.jpg',
-        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore velit dolore vel temporibus animi! Dolores sunt error ipsa quis repudiandae, nulla delectus voluptatum non praesentium? Doloremque iste ipsam reprehenderit fugiat?',
-        'classCard': 'card-7',
-      },
-    ]
-    //console.log('mockArticles:' , mockArticles);
     
-    return of(mockArticles)
   }
 
   loadArticlesTop(): Observable<any> {

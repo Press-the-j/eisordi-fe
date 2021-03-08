@@ -6,14 +6,22 @@ import { ArticlesRoutingModule } from './articles-routing.module';
 import { ArticlesComponent } from './articles.component';
 import { ArticlesContainerComponent } from './components/articles-container/articles-container.component';
 import { ArticlesService } from '../services/articles.service';
-import { ArticleCardComponent } from './components/articles-container/article-card/article-card.component';
-import { ArticlesTopComponent } from './components/articles-container/articles-top/articles-top.component'
+import { ArticleCardComponent } from './components/article-card/article-card.component';
+import { ArticlesTopComponent } from './components/articles-top/articles-top.component';
+import { PodcastComponent } from './podcast/podcast.component';
+import { PoetryComponent } from './poetry/poetry.component';
+import { StoriesComponent } from './stories/stories.component';
+import { MagazineComponent } from './magazine/magazine.component'
 
 const COMPONENTS = [
   ArticlesComponent,
   ArticlesContainerComponent,
   ArticleCardComponent,
-  ArticlesTopComponent
+  ArticlesTopComponent,
+  PodcastComponent,
+  PoetryComponent,
+  StoriesComponent,
+  MagazineComponent,
 ]
 
 @NgModule({

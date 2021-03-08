@@ -18,10 +18,10 @@ import { slideInAnimation } from './components/animations/slide-in-animations';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  animations: [
+  /* animations: [
     // animation triggers go here
     slideInAnimation
-  ]
+  ] */
 })
 export class HomeComponent implements OnInit {
 

@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./manifest/manifest.module').then(m => m.ManifestModule),
   },
   {
-    path: 'articoli',
+    path: 'pubblicazioni',
     loadChildren: () => import('./articles/articles.module').then(m => m.ArticlesModule),
   },
   {
