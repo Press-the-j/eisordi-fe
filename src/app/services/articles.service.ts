@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -7,7 +8,14 @@ import { map } from 'rxjs/operators';
 })
 export class ArticlesService {
 
-  constructor() { }
+  constructor(
+    private store: Store
+  ) { }
 
-  
+  loadArticles() {
+    //this.store.dispatch()
+    //this.store.dispatch()
+    //this.store.dispatch()
+    //this.store.dispatch()
+  }
 }

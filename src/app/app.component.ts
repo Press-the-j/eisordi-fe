@@ -31,20 +31,22 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
+    console.log('[START]', new Date())
     /* Check Resolution of Screen */
-    this.store.dispatch(new LoadArticles());
-    this.store.dispatch(new LoadArticlesTop());
     this.onResize()
-
+    
     this.responsiveService.getSizeStatus().subscribe( (size) => {
       this.screen$ = size
     })
+    /* ------------- */
+
     
     const loadConfigs$ = combineLatest([
       this.store.select<boolean>(isLoadArticlesAll),
-      this.store.select<boolean>(isLoadArticlesTop)
     ]).pipe(
-      tap(([articlesAll$, articlesTop$]) => {
+      tap(([articlesAll$]) => {
+        console.log('[END]', new Date());
+        
         /* console.log("ALL: " , articlesAll$);
         console.log("TOP: " , articlesTop$); */
         

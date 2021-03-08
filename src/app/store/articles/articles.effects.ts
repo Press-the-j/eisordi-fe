@@ -27,7 +27,6 @@ export class ArticlesEffects {
               return this.articlesService.loadArticles().pipe(
                 map((response)=>{
                   this.logService.logThis("loadArticlesAll:",response);
-                  return new ReduceArticlesAll(response);
                 }),
                 catchError((error) => {
                   return of(new LoadArticlesFailure(error));
@@ -35,22 +34,7 @@ export class ArticlesEffects {
               )
             }),
           );
-    @Effect()
-    LoadArticlesTop: Observable<any> = this.actions$
-          .pipe(
-            ofType(ArticlesActionsTypes.LOAD_ARTICLES_TOP),
-            switchMap((action: LoadArticlesTop)=>{
-              return this.articlesService.loadArticlesTop().pipe(
-                map((response)=>{
-                  this.logService.logThis("loadArticlesTop:",response);
-                  return new ReduceArticlesTop(response);
-                }),
-                catchError((error) => {
-                  return of(new LoadArticlesFailure(error));
-                })
-              )
-            }),
-          );
+
     
     @Effect()
     LoadArticlesFailure: Observable<any> = this.actions$
@@ -58,6 +42,7 @@ export class ArticlesEffects {
             ofType(ArticlesActionsTypes.LOAD_ARTICLES_FAILURE),
             map((error)=>{
               this.logService.logThis("error", error)
+              alert(error);
             })
   
             
