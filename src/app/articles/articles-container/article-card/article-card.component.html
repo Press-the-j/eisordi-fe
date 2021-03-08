@@ -1,7 +1,7 @@
-  <div class="wrap-article-card" [class]="(isOpen$$ | async) ? 'is-open' : '' ">
-    <div (click)="toggleArticle($event)" class="article-card" [class]="(isOpen$$ | async) ? 'is-open' : '' ">
+  <div class="wrap-article-card" >
+    <a [routerLink]="" class="article-card">
       {{ article_item | json}}
       Qui va la card dell'articolo
-    </div>
+    </a>
   </div>
 
