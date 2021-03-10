@@ -1,13 +1,11 @@
-export interface ArticlesState {
+export interface MagazinesState {
   magazines: object[] | null; //$ tipizza article
-  articles_top: object[] | null; //$ tipizza article
-  isLoadAll: boolean;
-  isLoadTop: boolean;
+  archive: object[] | null; //$ tipizza article
+  isLoad: boolean;
 }
 
-export const initialState: ArticlesState = {
-  articles: null,
-  articles_top: null,
-  isLoadAll: false,
-  isLoadTop: false,
+export const initialState: MagazinesState = {
+  magazines: null,
+  archive: nul
+  isLoad: null,
 };

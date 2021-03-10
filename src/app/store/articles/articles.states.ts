@@ -4,9 +4,13 @@ export interface ArticlesState {
   isLoadMagazines: boolean;
   isLoadPoetries: boolean;
   isLoadPodcasts: boolean;
+  isLoadStories: boolean;
 }
 
 export const initialState: ArticlesState = {
   isLoadAll: false,
-  isLoadMagazines: false, 
+  isLoadMagazines: false,
+  isLoadPoetries: false,
+  isLoadPodcasts: false,
+  isLoadStories: false, 
 };

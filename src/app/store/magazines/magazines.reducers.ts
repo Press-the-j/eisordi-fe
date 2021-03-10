@@ -1,11 +1,15 @@
-export function ArticlesReducer(state = initialState, action: All): ArticlesState {
+import { All, MagazinesActionsTypes } from "./magazines.actions";
+import { initialState, MagazinesState } from "./magazines.states";
+
+export function ArticlesReducer(state = initialState, action: All): MagazinesState {
   switch (action.type) {
-    case ArticlesActionsTypes.REDUCE_ARTICLES_TOP: {
-      const articlesTop = [...action.payload];
+    case MagazinesActionsTypes.MAGAZINES_LOADED: {
+      const magazines = [...action.payload.items];
       return {
         ...state,
-        articles_top: [...articlesTop],
-        isLoadTop:true
+        archive:
+        magazines: [...magazines],
+        isLoad:true
       };
     }
 default: {

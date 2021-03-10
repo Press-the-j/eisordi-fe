@@ -61,10 +61,17 @@ export class MockService {
       
     ]
 
+    const response = {
+      "total-page": 1,
+      "total-items": 7,
+      "current-page": 1,
+      "per-page": 10,
+      "items": mockMagazines
+    }
 
-    console.log('mockArticlesTop:' , mockMagazines);
+    console.log('mockArticlesResponse:' , response);
     
-    return of(mockMagazines)
+    return of(response)
     
   }
 

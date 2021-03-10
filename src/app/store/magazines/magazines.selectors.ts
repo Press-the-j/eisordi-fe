@@ -1,6 +1,9 @@
-export const getArticlesState = createFeatureSelector<ArticlesState>('articlesState');
+import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { MagazinesState } from "./magazines.states";
 
-export const isLoadArticlesAll = createSelector(
+export const getArticlesState = createFeatureSelector<MagazinesState>('magazinesState');
+
+export const isLoadMagazines = createSelector(
   getArticlesState,
-  (feature: ArticlesState) => !!feature.isLoadAll && feature.isLoadAll || null
+  (feature: MagazinesState) => !!feature.isLoad && feature.isLoad || null
 )
