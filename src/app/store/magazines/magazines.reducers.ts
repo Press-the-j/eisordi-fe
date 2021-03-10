@@ -7,7 +7,7 @@ export function ArticlesReducer(state = initialState, action: All): MagazinesSta
       const magazines = [...action.payload.items];
       return {
         ...state,
-        archive:
+        archive: [...state.archive, ...magazines],
         magazines: [...magazines],
         isLoad:true
       };
