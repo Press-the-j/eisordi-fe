@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/* import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { switchMap, map, catchError, tap, finalize } from 'rxjs/operators';
@@ -33,16 +33,4 @@ export class ArticlesEffects {
             }),
           );
 
-    
-    @Effect()
-    LoadArticlesFailure: Observable<any> = this.actions$
-          .pipe(
-            ofType(ArticlesActionsTypes.LOAD_ARTICLES_FAILURE),
-            map((error)=>{
-              this.logService.logThis("error", error)
-              alert(error);
-            })
-  
-            
-          );
-}
+} */

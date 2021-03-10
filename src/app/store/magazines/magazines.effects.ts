@@ -33,16 +33,4 @@ export class ArticlesEffects {
             }),
           );
 
-    
-    @Effect()
-    LoadArticlesFailure: Observable<any> = this.actions$
-          .pipe(
-            ofType(ArticlesActionsTypes.LOAD_ARTICLES_FAILURE),
-            map((error)=>{
-              this.logService.logThis("error", error)
-              alert(error);
-            })
-  
-            
-          );
 }

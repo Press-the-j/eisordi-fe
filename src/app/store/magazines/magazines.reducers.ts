@@ -1,6 +1,3 @@
-import { ArticlesState, initialState  } from './articles.states';
-import { All, ArticlesActionsTypes } from './articles.actions'
-
 export function ArticlesReducer(state = initialState, action: All): ArticlesState {
   switch (action.type) {
     case ArticlesActionsTypes.REDUCE_ARTICLES_TOP: {
@@ -11,14 +8,7 @@ export function ArticlesReducer(state = initialState, action: All): ArticlesStat
         isLoadTop:true
       };
     }
-    case ArticlesActionsTypes.REDUCE_ARTICLES_ALL: {
-      const articlesAll=[...action.payload]
-      return {
-        ...state,
-        isLoadAll:true
-      };
-    }
-    default: {
+default: {
       return state
     }
   }
