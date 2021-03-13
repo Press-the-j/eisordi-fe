@@ -13,7 +13,7 @@ export class SpinnerService {
 
   constructor() {
     this.isVisible$ = this.isLoading$$.asObservable().pipe(
-      tap((pageLoading) => console.log(pageLoading)
+      tap((pageLoading) => console.log('[PageLoading]',pageLoading)
       ),
       debounceTime(100),
       tap(loaded => (loaded ? this.enableScroll() : this.disableScroll()))

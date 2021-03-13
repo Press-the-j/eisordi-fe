@@ -10,7 +10,7 @@ export class MagazinesLoaded implements Action {
 }
 export class MagazinesFailure implements Action {
   readonly type = MagazinesActionsTypes.MAGAZINES_FAILURE;
-  constructor() { }
+  constructor(public payload: any) { }
 }
 export type All =
       MagazinesLoaded

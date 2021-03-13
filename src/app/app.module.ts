@@ -1,9 +1,11 @@
 /* ANGULAR */
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 /* APP_MODULE */
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 /* MATERIAL */
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +30,7 @@ import { ArticlesEffects } from './store/articles/articles.effects';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NoopAnimationsModule,
     MaterialModule,

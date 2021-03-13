@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { ResponsiveService } from './services/responsive.service';
 /* CONSTANTS */
 /* RXJS */
-import { combineLatest, concat, Observable, Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { combineLatest, Observable, Subscription } from 'rxjs';
+import { first, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 /* STORE */
-import { LoadArticles, LoadArticlesTop } from './store/articles/articles.actions';
-import { isLoadArticlesAll, isLoadArticlesTop } from './store/articles/articles.selectors';
+import { LoadArticles} from './store/articles/articles.actions';
+import { isLoadArticlesAll } from './store/articles/articles.selectors';
 import { SpinnerService } from './services/spinner.service';
+import { ArticlesService } from './services/articles.service';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit{
 
   constructor(
     private responsiveService: ResponsiveService,
+    private articlesService: ArticlesService,
     private store: Store,
     public spinnerService: SpinnerService,
   ) {
@@ -32,28 +34,32 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     console.log('[START]', new Date())
+    this.articlesService.loadArticles();
     /* Check Resolution of Screen */
     this.onResize()
-    
-    this.responsiveService.getSizeStatus().subscribe( (size) => {
+    this.responsiveService.getSizeStatus().subscribe( (size) => {//$ forse mettere hook del finish onresize
       this.screen$ = size
     })
     /* ------------- */
 
     
-    const loadConfigs$ = combineLatest([
+    const loadedConfigs$ = combineLatest([
       this.store.select<boolean>(isLoadArticlesAll),
     ]).pipe(
-      tap(([articlesAll$]) => {
-        console.log('[END]', new Date());
-        
+      first((isLoadedAll: boolean[]) => {
+        const isLoadAll = isLoadedAll.filter((isLoadItem) => isLoadItem === false)
+        if (isLoadAll.length > 0) return true;
+        return false
+      }),
+      tap(() => {
+        console.log('[END]', new Date());        
         /* console.log("ALL: " , articlesAll$);
         console.log("TOP: " , articlesTop$); */
         
       }),
     ).subscribe()
 
-    this.subscriptions.add(loadConfigs$)
+    this.subscriptions.add(loadedConfigs$)
   }
 
   onResize() {

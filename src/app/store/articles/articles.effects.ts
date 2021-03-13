@@ -5,6 +5,7 @@ import { switchMap, map, catchError, tap, finalize } from 'rxjs/operators';
 import { ArticlesActionsTypes, LoadArticles, ArticlesFailure, LoadMagazines } from './articles.actions';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { LogService } from 'src/app/services/dev/log.service';
+import { MagazinesFailure, MagazinesLoaded } from '../magazines/magazines.actions';
 
 
 @Injectable()
@@ -17,16 +18,16 @@ export class ArticlesEffects {
        
     ) { }
 
-    @Effect({dispatch: false})
+    @Effect()
     LoadArticles: Observable<any> = this.actions$
           .pipe(
             ofType(ArticlesActionsTypes.LOAD_ARTICLES),
-            map(() => {
-              new LoadMagazines();
-              new LoadPoetries();
+            switchMap(res => [
+              new LoadMagazines()
+              /* new LoadPoetries();
               new LoadPodcasts();
-              new LoadStories();
-            }),
+              new LoadStories(); */
+            ]),
           );
 
 
@@ -35,7 +36,7 @@ export class ArticlesEffects {
             .pipe(
               ofType(ArticlesActionsTypes.LOAD_MAGAZINES),
               switchMap(() => {
-                return this.articlesService.loadMagazines.pipe(
+                return this.articlesService.loadMagazines().pipe(
                   map((magazines)=>{
                     new MagazinesLoaded(magazines);
                   }),
@@ -45,7 +46,7 @@ export class ArticlesEffects {
                 )
               })
             );
-      @Effect({dispatch: false})
+      /* @Effect({dispatch: false})
       LoadPoetries: Observable<any> = this.actions$
             .pipe(
               ofType(ArticlesActionsTypes.LOAD_POETRIES),
@@ -59,8 +60,8 @@ export class ArticlesEffects {
                   })
                 )
               })
-            );
-      @Effect({dispatch: false})
+            ); */
+      /* @Effect({dispatch: false})
       LoadStories: Observable<any> = this.actions$
             .pipe(
               ofType(ArticlesActionsTypes.LOAD_STORIES),
@@ -74,8 +75,8 @@ export class ArticlesEffects {
                   })
                 )
               })
-            );
-      @Effect({dispatch: false})
+            ); */
+      /* @Effect({dispatch: false})
       LoadPodcasts: Observable<any> = this.actions$
             .pipe(
               ofType(ArticlesActionsTypes.LOAD_PODCASTS),
@@ -89,7 +90,7 @@ export class ArticlesEffects {
                   })
                 )
               })
-            );
+            ); */
     
 
 
