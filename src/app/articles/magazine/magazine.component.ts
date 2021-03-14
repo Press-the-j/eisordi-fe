@@ -18,8 +18,8 @@ export class MagazineComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.magazines_top$ = this.store.select(getMagazinesTop)
-    this.magazines$ = this.store.select(getMagazines)
+/*     this.magazines_top$ = this.store.select(getMagazinesTop)
+ */    this.magazines$ = this.store.select(getMagazines)
   }
 
 }

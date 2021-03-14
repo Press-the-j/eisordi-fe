@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { switchMap, map, catchError, tap, finalize } from 'rxjs/operators';
-import { ArticlesActionsTypes, LoadArticles, ArticlesFailure, LoadMagazines } from './articles.actions';
+import { ArticlesActionsTypes} from './articles.actions';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { LogService } from 'src/app/services/dev/log.service';
-import { MagazinesFailure, MagazinesLoaded } from '../magazines/magazines.actions';
+import { LoadMagazines } from '../magazines/magazines.actions';
 
 
 @Injectable()
@@ -31,21 +31,7 @@ export class ArticlesEffects {
           );
 
 
-      @Effect({dispatch: false})
-      LoadMagazines: Observable<any> = this.actions$
-            .pipe(
-              ofType(ArticlesActionsTypes.LOAD_MAGAZINES),
-              switchMap(() => {
-                return this.articlesService.loadMagazines().pipe(
-                  map((magazines)=>{
-                    new MagazinesLoaded(magazines);
-                  }),
-                  catchError((error) => {
-                    return of(new MagazinesFailure(error))
-                  })
-                )
-              })
-            );
+     
       /* @Effect({dispatch: false})
       LoadPoetries: Observable<any> = this.actions$
             .pipe(

@@ -21,6 +21,8 @@ import { LayoutModule } from './shared/layout.module';
 import { ArticlesReducer } from './store/articles/articles.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { ArticlesEffects } from './store/articles/articles.effects';
+import { MagazinesEffects } from './store/magazines/magazines.effects';
+import { MagazinesReducer } from './store/magazines/magazines.reducers';
 
 
 
@@ -37,8 +39,10 @@ import { ArticlesEffects } from './store/articles/articles.effects';
     LayoutModule,
     StoreModule.forRoot({}),
     StoreModule.forFeature('articlesState', ArticlesReducer),
+    StoreModule.forFeature('magazinesState', MagazinesReducer),
     EffectsModule.forRoot([
-      ArticlesEffects
+      ArticlesEffects,
+      MagazinesEffects
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
@@ -48,3 +52,5 @@ import { ArticlesEffects } from './store/articles/articles.effects';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
