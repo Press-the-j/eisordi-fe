@@ -7,3 +7,8 @@ export const isLoadMagazines = createSelector(
   getArticlesState,
   (feature: MagazinesState) => !!feature.isLoad && feature.isLoad || null
 )
+
+export const getMagazines = createSelector(
+  getArticlesState,
+  (feature: MagazinesState) => !!feature.magazines && feature.magazines || null
+)
