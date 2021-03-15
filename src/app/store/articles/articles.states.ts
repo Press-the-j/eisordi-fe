@@ -1,6 +1,5 @@
 
 export interface ArticlesState {
-  isLoadAll: boolean;
   isLoadMagazines: boolean;
   isLoadPoetries: boolean;
   isLoadPodcasts: boolean;
@@ -8,9 +7,8 @@ export interface ArticlesState {
 }
 
 export const initialState: ArticlesState = {
-  isLoadAll: false,
   isLoadMagazines: false,
-  isLoadPoetries: false,
-  isLoadPodcasts: false,
-  isLoadStories: false, 
+  isLoadPoetries: true,
+  isLoadPodcasts: true,
+  isLoadStories: true, 
 };

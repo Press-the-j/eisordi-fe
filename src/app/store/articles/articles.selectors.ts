@@ -6,7 +6,7 @@ export const getArticlesState = createFeatureSelector<ArticlesState>('articlesSt
 
 export const isLoadArticlesAll = createSelector(
   getArticlesState,
-  (feature: ArticlesState) => !!feature.isLoadAll && feature.isLoadAll || null
+  (feature: ArticlesState) => [feature.isLoadMagazines, feature.isLoadPodcasts, feature.isLoadPoetries, feature.isLoadStories].every(Boolean)  || false
 )
 
 

@@ -41,7 +41,6 @@ export class AppComponent implements OnInit{
       this.screen$ = size
     })
     /* ------------- */
-
     
     const loadedConfigs$ = combineLatest([
       this.store.select<boolean>(isLoadArticlesAll),

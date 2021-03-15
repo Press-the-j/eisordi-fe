@@ -12,7 +12,7 @@ export function MagazinesReducer(state = initialState, action: All): MagazinesSt
         isLoad:true
       };
     }
-default: {
+    default: {
       return state
     }
   }

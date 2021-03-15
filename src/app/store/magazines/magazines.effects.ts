@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { LogService } from 'src/app/services/dev/log.service';
-import { ArticlesActionsTypes } from '../articles/articles.actions';
+import { ArticlesActionsTypes, isLoadMagazines } from '../articles/articles.actions';
 import { MagazinesActionsTypes, MagazinesFailure, MagazinesLoaded } from './magazines.actions';
 
 
@@ -24,10 +24,10 @@ export class MagazinesEffects {
             ofType(MagazinesActionsTypes.LOAD_MAGAZINES),
             switchMap(() => {
               return this.articlesService.loadMagazines().pipe(
-                map((magazines)=>{
-                  this.logService.logThis('magazines',magazines)
-                  return new MagazinesLoaded(magazines);
-                }),
+                switchMap((magazines)=>[
+                   new MagazinesLoaded(magazines),
+                   new isLoadMagazines
+                ]),
                 catchError((error) => {
                   return of(new MagazinesFailure(error))
                 })
