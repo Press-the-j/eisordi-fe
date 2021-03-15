@@ -9,7 +9,11 @@ export function MagazinesReducer(state = initialState, action: All): MagazinesSt
         ...state,
         archive: [ ...state.archive,...magazines],
         magazines: [...magazines],
-        isLoad:true
+        isLoad:true,
+        total_page: action.payload.total_page,
+        total_items: action.payload.total_items,
+        current_page: action.payload.current_page,
+        per_page: action.payload.per_page
       };
     }
     default: {

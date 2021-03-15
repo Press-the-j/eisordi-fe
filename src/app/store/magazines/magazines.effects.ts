@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { LogService } from 'src/app/services/dev/log.service';
 import { ArticlesActionsTypes, isLoadMagazines } from '../articles/articles.actions';
@@ -24,6 +24,8 @@ export class MagazinesEffects {
             ofType(MagazinesActionsTypes.LOAD_MAGAZINES),
             switchMap(() => {
               return this.articlesService.loadMagazines().pipe(
+                tap((magazines) => console.log('MAGAZINES: ', magazines)
+                ),
                 switchMap((magazines)=>[
                    new MagazinesLoaded(magazines),
                    new isLoadMagazines
