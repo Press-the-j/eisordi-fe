@@ -1,5 +1,5 @@
 export class Map {
-    'location': string;
-    'path': string;
-    'isActive': boolean;
+    location: string;
+    path: string;
+    isActive: boolean;
 }

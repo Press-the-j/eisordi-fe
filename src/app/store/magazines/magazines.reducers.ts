@@ -16,6 +16,13 @@ export function MagazinesReducer(state = initialState, action: All): MagazinesSt
         per_page: action.payload.per_page
       };
     }
+    case MagazinesActionsTypes.MAGAZINES_TOP_LOADED: {
+      const magazines = [...action.payload.items];
+      return {
+        ...state,
+        magazines_top: magazines
+      };
+    }
     default: {
       return state
     }

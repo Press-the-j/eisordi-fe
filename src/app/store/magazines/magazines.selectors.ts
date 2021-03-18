@@ -8,7 +8,28 @@ export const isLoadMagazines = createSelector(
   (feature: MagazinesState) => !!feature.isLoad && feature.isLoad || null
 )
 
-export const getMagazines = createSelector(
+export const getMagazinesAll = createSelector(
   getArticlesState,
   (feature: MagazinesState) => !!feature.magazines && feature.magazines || null
 )
+
+export const getMagazinesTop = createSelector(
+  getArticlesState,
+  (feature: MagazinesState) => !!feature.magazines_top && feature.magazines_top || null
+)
+
+export const perPage = createSelector(
+  getArticlesState,
+  (feature: MagazinesState) => !!feature.per_page && feature.per_page || null
+)
+
+export const pagerMagazines = createSelector(
+  getArticlesState,
+  (feature: MagazinesState) => {
+    !!feature.per_page && feature.per_page,
+    !!feature.current_page && feature.current_page,
+    !!feature.total_items && feature.total_items,
+    !!feature.total_page && feature.total_page
+  } 
+)
+

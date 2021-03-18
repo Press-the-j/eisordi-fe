@@ -11,6 +11,7 @@ import { LoadArticles} from './store/articles/articles.actions';
 import { isLoadArticlesAll } from './store/articles/articles.selectors';
 import { SpinnerService } from './services/spinner.service';
 import { ArticlesService } from './services/articles.service';
+import { pagerMagazines } from './store/magazines/magazines.selectors';
 
 @Component({
   selector: 'app-root',
@@ -41,14 +42,19 @@ export class AppComponent implements OnInit{
       this.screen$ = size
     })
     /* ------------- */
-    
+    /* const pager$ = this.store.select(pager).pipe(
+      tap(r=>console.log(r)
+      )
+    ).subscribe(); */
+
     const loadedConfigs$ = combineLatest([
       this.store.select<boolean>(isLoadArticlesAll),
     ]).pipe(
       first((isLoadedAll: boolean[]) => {
-        const isLoadAll = isLoadedAll.filter((isLoadItem) => isLoadItem === false)
-        if (isLoadAll.length > 0) return true;
-        return false
+        /* console.log(isLoadedAll.some(x => !x)); */
+        
+        if (isLoadedAll.some(x => !x)) return false;
+        return true
       }),
       tap(() => {
         console.log('[END]', new Date());        

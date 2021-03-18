@@ -12,7 +12,7 @@ export class ArticlesTopComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    //console.log("articles top in component" , this.articles_top)
+    console.log("articles top in component" , this.articles_top)
   }
 
 }

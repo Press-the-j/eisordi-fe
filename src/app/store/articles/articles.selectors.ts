@@ -9,5 +9,10 @@ export const isLoadArticlesAll = createSelector(
   (feature: ArticlesState) => [feature.isLoadMagazines, feature.isLoadPodcasts, feature.isLoadPoetries, feature.isLoadStories].every(Boolean)  || false
 )
 
+export const isLoadMagazines = createSelector(
+  getArticlesState,
+  (feature: ArticlesState) => feature.isLoadMagazines
+)
+
 
 

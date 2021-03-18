@@ -1,1 +1,3 @@
-<app-articles-container [articles_top]="magazines_top$ | async" [articles]="magazines$ | async"></app-articles-container>
+<ng-container *ngIf="magazines_load$ | async">
+  <app-articles-container [articles_top]="magazines_top" [articles]="magazines_all"></app-articles-container>
+</ng-container>

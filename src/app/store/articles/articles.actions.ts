@@ -3,11 +3,11 @@ import { Action } from '@ngrx/store';
 export enum ArticlesActionsTypes {
   LOAD_ARTICLES = '[ARTICLES] Load articles',
   ARTICLES_SUCCESS = '[ARTICLES] Load articles success',
-  IS_LOAD_MAGAZINES = '[ARTICLES] Is Magazines articles',
-  IS_LOAD_PODCASTS = '[ARTICLES] Is Podcasts articles',
-  IS_LOAD_STORIES = '[ARTICLES] Is Stories articles',
-  IS_LOAD_POETRIES = '[ARTICLES] Is Poetries articles',
-  ARTICLES_FAILURE = '[ARTICLES] Load articles failure',
+  IS_LOAD_MAGAZINES = '[ARTICLES] Is Magazines load',
+  IS_LOAD_PODCASTS = '[ARTICLES] Is Podcasts load',
+  IS_LOAD_STORIES = '[ARTICLES] Is Stories load',
+  IS_LOAD_POETRIES = '[ARTICLES] Is Poetries load',
+  ARTICLES_FAILURE = '[ARTICLES] Load articles load',
 }
 
 export class LoadArticles implements Action {

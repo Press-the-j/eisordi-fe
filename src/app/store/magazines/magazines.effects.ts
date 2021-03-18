@@ -1,33 +1,41 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { LogService } from 'src/app/services/dev/log.service';
+import { ErrorService } from 'src/app/services/error.service';
 import { ArticlesActionsTypes, isLoadMagazines } from '../articles/articles.actions';
-import { MagazinesActionsTypes, MagazinesFailure, MagazinesLoaded } from './magazines.actions';
+import { MagazinesActionsTypes, MagazinesFailure, MagazinesLoaded, MagazinesTopLoaded } from './magazines.actions';
+import { perPage } from './magazines.selectors';
 
-
+export class MagazinesHttp {
+  top: object;
+  all: object;
+}
 @Injectable()
 export class MagazinesEffects {
 
     constructor(
         private actions$: Actions,
         private articlesService: ArticlesService,
-        private logService: LogService
-       
+        private store: Store,
+        private errorService: ErrorService
     ) { }
 
     @Effect()
     LoadMagazines: Observable<any> = this.actions$
           .pipe(
             ofType(MagazinesActionsTypes.LOAD_MAGAZINES),
-            switchMap(() => {
-              return this.articlesService.loadMagazines().pipe(
-                tap((magazines) => console.log('MAGAZINES: ', magazines)
+            switchMap(()=> this.store.select(perPage)),
+            switchMap((perPage: number) => {
+              return this.articlesService.loadMagazines(perPage).pipe(
+                tap((magazines: MagazinesHttp) => console.log('MAGAZINES: ', magazines)
                 ),
-                switchMap((magazines)=>[
-                   new MagazinesLoaded(magazines),
+                switchMap((magazines: MagazinesHttp)=>[
+                   new MagazinesLoaded(magazines.all),
+                   new MagazinesTopLoaded(magazines.top),
                    new isLoadMagazines
                 ]),
                 catchError((error) => {
@@ -36,5 +44,10 @@ export class MagazinesEffects {
               )
             })
           );
-
+    @Effect({dispatch : false})
+    MagazinesFailure: Observable<any> = this.actions$
+          .pipe(
+            ofType(MagazinesActionsTypes.MAGAZINES_FAILURE),
+            map((action: MagazinesFailure) => this.errorService.alertError(action.payload))
+          )
 }
