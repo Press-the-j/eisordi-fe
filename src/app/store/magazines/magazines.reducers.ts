@@ -24,7 +24,7 @@ export function MagazinesReducer(state = initialState, action: All): MagazinesSt
         magazines_top: magazines
       };
     }
-    case MagazinesActionsTypes.SET_MAGAZINES_PER_PAGE: {
+    case MagazinesActionsTypes.SET_PAGE_FILTER_MAGAZINES: {
       const perPage = action.payload;
       return {
         ...state,

@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 
 export enum ArticlesActionsTypes {
-  LOAD_ARTICLES = '[ARTICLES] Load articles',
+  RESOLVE_ARTICLES = '[ARTICLES] Resolve articles',
   ARTICLES_SUCCESS = '[ARTICLES] Load articles success',
   IS_LOAD_MAGAZINES = '[ARTICLES] Is Magazines load',
   IS_LOAD_PODCASTS = '[ARTICLES] Is Podcasts load',
@@ -10,8 +10,8 @@ export enum ArticlesActionsTypes {
   ARTICLES_FAILURE = '[ARTICLES] Load articles load',
 }
 
-export class LoadArticles implements Action {
-  readonly type = ArticlesActionsTypes.LOAD_ARTICLES;
+export class ResolveArticles implements Action {
+  readonly type = ArticlesActionsTypes.RESOLVE_ARTICLES;
   constructor() { }
 }
 export class isLoadMagazines implements Action {
@@ -36,7 +36,7 @@ export class ArticlesFailure implements Action {
 }
 
 export type All =
-      LoadArticles
+      ResolveArticles
     | isLoadMagazines
     | isLoadPodcasts
     | isLoadStories

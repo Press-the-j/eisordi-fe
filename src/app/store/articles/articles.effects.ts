@@ -5,7 +5,7 @@ import { switchMap, map, catchError, tap, finalize } from 'rxjs/operators';
 import { ArticlesActionsTypes} from './articles.actions';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { LogService } from 'src/app/services/dev/log.service';
-import { LoadMagazines } from '../magazines/magazines.actions';
+import { ResolveMagazines } from '../magazines/magazines.actions';
 
 
 @Injectable()
@@ -19,11 +19,11 @@ export class ArticlesEffects {
     ) { }
 
     @Effect()
-    LoadArticles: Observable<any> = this.actions$
+    ResolveArticles: Observable<any> = this.actions$
           .pipe(
-            ofType(ArticlesActionsTypes.LOAD_ARTICLES),
+            ofType(ArticlesActionsTypes.RESOLVE_ARTICLES),
             switchMap(res => [
-              new LoadMagazines()
+              new ResolveMagazines()
               /* new LoadPoetries();
               new LoadPodcasts();
               new LoadStories(); */

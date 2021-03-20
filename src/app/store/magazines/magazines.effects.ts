@@ -6,13 +6,9 @@ import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { ErrorService } from 'src/app/services/error.service';
 import { isLoadMagazines } from '../articles/articles.actions';
-import { MagazinesActionsTypes, MagazinesFailure, MagazinesLoaded, MagazinesTopLoaded } from './magazines.actions';
-import { perPage } from './magazines.selectors';
+import { LoadMagazinesPerPage, MagazinesActionsTypes, MagazinesFailure, MagazinesLoaded, MagazinesTopLoaded } from './magazines.actions';
 
-export class MagazinesHttp {
-  top: object;
-  all: object;
-}
+
 @Injectable()
 export class MagazinesEffects {
 
@@ -24,18 +20,34 @@ export class MagazinesEffects {
     ) { }
 
     @Effect()
-    LoadMagazines: Observable<any> = this.actions$
+    ResolveMagazines: Observable<any> = this.actions$
           .pipe(
-            ofType(MagazinesActionsTypes.LOAD_MAGAZINES),
-            switchMap(()=> this.store.select(perPage)),
-            switchMap((perPage: number) => {
-              return this.articlesService.loadMagazines(perPage).pipe(
-                tap((magazines: MagazinesHttp) => console.log('MAGAZINES: ', magazines)
+            ofType(MagazinesActionsTypes.RESOLVE_MAGAZINES),
+            switchMap(() => {
+              return this.articlesService.resolveMagazines().pipe(
+                tap((magazines) => console.log('MAGAZINES LOAD: ', magazines)
                 ),
-                switchMap((magazines: MagazinesHttp)=>[
-                   new MagazinesLoaded(magazines.all),
+                switchMap((magazines)=>[
+                   new MagazinesLoaded(magazines.perPage),
                    new MagazinesTopLoaded(magazines.top),
                    new isLoadMagazines
+                ]),
+                catchError((error) => {
+                  return of(new MagazinesFailure(error))
+                })
+              )
+            })
+          );
+    @Effect()
+    LoadMagazinesPerPage: Observable<any> = this.actions$
+          .pipe(
+            ofType(MagazinesActionsTypes.LOAD_MAGAZINES_PER_PAGE),
+            switchMap((action: LoadMagazinesPerPage) => {
+              return this.articlesService.loadMagazinesPerPage(action.payload).pipe(
+                tap((magazines) => console.log('MAGAZINES: ', magazines)
+                ),
+                switchMap((magazines)=>[
+                   new MagazinesLoaded(magazines),
                 ]),
                 catchError((error) => {
                   return of(new MagazinesFailure(error))

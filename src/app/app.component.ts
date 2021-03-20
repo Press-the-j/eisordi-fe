@@ -7,11 +7,9 @@ import { combineLatest, Observable, Subscription } from 'rxjs';
 import { first, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 /* STORE */
-import { LoadArticles} from './store/articles/articles.actions';
 import { isLoadArticlesAll } from './store/articles/articles.selectors';
 import { SpinnerService } from './services/spinner.service';
 import { ArticlesService } from './services/articles.service';
-import { pagerMagazines } from './store/magazines/magazines.selectors';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +33,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     console.log('[START]', new Date())
-    this.articlesService.loadArticles();
+    this.articlesService.resolveArticles();
     this.spinnerService.load(true)
     /* Check Resolution of Screen */
     this.onResize()

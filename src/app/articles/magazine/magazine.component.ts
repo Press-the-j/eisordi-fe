@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
-import { SetMagazinesPerPage } from 'src/app/store/magazines/magazines.actions';
+import { LoadMagazinesPerPage } from 'src/app/store/magazines/magazines.actions';
 import { getMagazinesAll, getMagazinesTop, isLoadMagazines, pagerMagazines } from 'src/app/store/magazines/magazines.selectors';
 
 @Component({
@@ -43,7 +43,7 @@ export class MagazineComponent implements OnInit {
   }
 
   onPageFilter(value) {
-     this.store.dispatch(new SetMagazinesPerPage(value))
+     this.store.dispatch(new LoadMagazinesPerPage(value))
   }
 
 }
