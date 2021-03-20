@@ -3,4 +3,5 @@ export class Pager {
   current_page: number | null;
   total_items: number | null;
   total_page: number | null;
+  total_in_page: number | null;
 }

@@ -30,7 +30,8 @@ export const pagerMagazines = createSelector(
       per_page: feature.per_page,
       current_page: feature.current_page,
       total_items: feature.total_items,
-      total_page: feature.total_page
+      total_page: feature.total_page,
+      total_in_page: feature.total_in_page
     }
     return pager
   }

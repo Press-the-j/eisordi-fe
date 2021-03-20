@@ -1,8 +1,8 @@
 <app-articles-top [articles_top]="articles_top"></app-articles-top>
-<ng-container *ngIf='articles'>
+<ng-container *ngIf='articles_all'>
   <div class="articles-container">
       <app-article-card *ngFor="let article of articles_all" [article_item]='article'></app-article-card>
   </div>
 </ng-container>
-<app-pager [pager]="articles_pager"></app-pager>
+<app-pager (pageFilter)="onPageFilter($event)" [pager]="articles_pager"></app-pager>
 

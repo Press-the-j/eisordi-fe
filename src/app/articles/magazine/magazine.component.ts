@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
+import { SetMagazinesPerPage } from 'src/app/store/magazines/magazines.actions';
 import { getMagazinesAll, getMagazinesTop, isLoadMagazines, pagerMagazines } from 'src/app/store/magazines/magazines.selectors';
 
 @Component({
@@ -21,9 +22,6 @@ export class MagazineComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    const test = this.store.select(pagerMagazines).subscribe(r => console.log('TEST',r));
-    
     this.magazines_load$ = combineLatest([
       this.store.select(isLoadMagazines),
       this.store.select(getMagazinesTop),
@@ -33,10 +31,7 @@ export class MagazineComponent implements OnInit {
       filter(([isLoad, top, all, pager]) => {
         return isLoad === true
       }),
-      tap( arr => console.log(arr)), 
       tap(([isLoad, top, all, pager]) => {
-        console.log('pager',pager);
-        
         this.magazines_top = top;
         this.magazines_all = all;
         this.magazines_pager = pager;
@@ -45,7 +40,10 @@ export class MagazineComponent implements OnInit {
         return true
       })
     )
-    
+  }
+
+  onPageFilter(value) {
+     this.store.dispatch(new SetMagazinesPerPage(value))
   }
 
 }

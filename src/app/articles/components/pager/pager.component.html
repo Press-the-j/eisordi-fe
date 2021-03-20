@@ -1,5 +1,27 @@
 <div class="wrap-pager">
-  <div class="pagination">
-    
+  <div class="pager-filter">
+    <span class="pager-text-style">Elementi per pagina</span>
+    <select (change)="onPageFilter($event)">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+    </select>
+  </div>
+  <div class="pager-counter">
+    <span class="total-visited">
+      {{ totalVisited$ | async }}
+    </span>
+    <span class ="pager-text-style"> di </span>
+    <span class="total-items">
+      {{ totalItems$ | async }}
+    </span>
+  </div>
+  <div class="arrows">
+    <div class="arrow-prev">
+      &lt;
+    </div>
+    <div class="arrow-next">
+      &gt;
+    </div>
   </div>
 </div>

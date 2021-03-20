@@ -4,17 +4,23 @@
   height: map-get($map: $pager, $key: height );
   display: flex;
   align-items: center;
-  justify-content: center;
-
-  .pagination {
-    display: inline-block;
-
-    a {
-      color: black;
-      float: left;
-      padding: 8px 16px;
-      text-decoration: none;
+  padding: 0.5em;
+  .pager-text-style {
+    font-style: italic;
+    font-size: 0.8em;
+    color: rgba(0,0,0,0.4);
+  }
+  .pager-filter {
+    span {
+      margin-right: 0.5em;
     }
+    select {
+      max-height:25px;
+    }
+  }
 
+  .arrows {
+    display: flex;
+    align-items: center;
   }
 }

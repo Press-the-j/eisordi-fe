@@ -3,6 +3,7 @@ export interface MagazinesState {
   magazines: object[] | null; //$ tipizza article
   archive: any[]; //$ tipizza article
   total_page: number,
+  total_in_page: number,
   total_items: number | null,
   current_page: number | null,
   per_page:number,
@@ -15,6 +16,7 @@ export const initialState: MagazinesState = {
   magazines: null,
   archive: [],
   total_page: null,
+  total_in_page: null,
   total_items: null,
   current_page: 1,
   per_page: 5,
