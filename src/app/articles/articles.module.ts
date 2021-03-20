@@ -11,7 +11,8 @@ import { ArticlesTopComponent } from './components/articles-top/articles-top.com
 import { PodcastComponent } from './podcast/podcast.component';
 import { PoetryComponent } from './poetry/poetry.component';
 import { StoriesComponent } from './stories/stories.component';
-import { MagazineComponent } from './magazine/magazine.component'
+import { MagazineComponent } from './magazine/magazine.component';
+import { PagerComponent } from './components/pager/pager.component'
 
 const COMPONENTS = [
   ArticlesComponent,
@@ -27,6 +28,7 @@ const COMPONENTS = [
 @NgModule({
   declarations: [
     ...COMPONENTS,
+    PagerComponent,
   ],  
   imports: [
     CommonModule,

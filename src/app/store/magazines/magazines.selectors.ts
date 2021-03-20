@@ -26,10 +26,14 @@ export const perPage = createSelector(
 export const pagerMagazines = createSelector(
   getArticlesState,
   (feature: MagazinesState) => {
-    !!feature.per_page && feature.per_page,
-    !!feature.current_page && feature.current_page,
-    !!feature.total_items && feature.total_items,
-    !!feature.total_page && feature.total_page
-  } 
+    const pager = {
+      per_page: feature.per_page,
+      current_page: feature.current_page,
+      total_items: feature.total_items,
+      total_page: feature.total_page
+    }
+    return pager
+  }
+
 )
 

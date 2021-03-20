@@ -1,0 +1,20 @@
+@import '../../../shared/styles/variables';
+
+.wrap-pager {
+  height: map-get($map: $pager, $key: height );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .pagination {
+    display: inline-block;
+
+    a {
+      color: black;
+      float: left;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+
+  }
+}

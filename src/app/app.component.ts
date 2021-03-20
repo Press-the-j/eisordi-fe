@@ -36,6 +36,7 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     console.log('[START]', new Date())
     this.articlesService.loadArticles();
+    this.spinnerService.load(true)
     /* Check Resolution of Screen */
     this.onResize()
     this.responsiveService.getSizeStatus().subscribe( (size) => {//$ forse mettere hook del finish onresize
@@ -49,17 +50,16 @@ export class AppComponent implements OnInit{
 
     const loadedConfigs$ = combineLatest([
       this.store.select<boolean>(isLoadArticlesAll),
+      //$ other config load
     ]).pipe(
       first((isLoadedAll: boolean[]) => {
         /* console.log(isLoadedAll.some(x => !x)); */
-        
         if (isLoadedAll.some(x => !x)) return false;
         return true
       }),
       tap(() => {
+        this.spinnerService.load(false)
         console.log('[END]', new Date());        
-        /* console.log("ALL: " , articlesAll$);
-        console.log("TOP: " , articlesTop$); */
         
       }),
     ).subscribe()

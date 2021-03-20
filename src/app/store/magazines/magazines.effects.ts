@@ -4,9 +4,8 @@ import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { ArticlesService } from 'src/app/services/articles.service';
-import { LogService } from 'src/app/services/dev/log.service';
 import { ErrorService } from 'src/app/services/error.service';
-import { ArticlesActionsTypes, isLoadMagazines } from '../articles/articles.actions';
+import { isLoadMagazines } from '../articles/articles.actions';
 import { MagazinesActionsTypes, MagazinesFailure, MagazinesLoaded, MagazinesTopLoaded } from './magazines.actions';
 import { perPage } from './magazines.selectors';
 
