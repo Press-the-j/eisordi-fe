@@ -24,10 +24,13 @@ export function MagazinesReducer(state = initialState, action: All): MagazinesSt
         magazines_top: magazines
       };
     }
-    case MagazinesActionsTypes.SET_PAGE_FILTER_MAGAZINES: {
-      const perPage = action.payload;
+    case MagazinesActionsTypes.MAGAZINES_PAGER_FILTER_CHANGED: {
+      const perPage = action.payload.per_page;
+      const magazines = [...action.payload.items]
       return {
         ...state,
+        archive: [...magazines],
+        magazines: [...magazines],
         per_page: perPage
       };
     }

@@ -9,16 +9,20 @@ import { Pager } from 'src/app/models/pager';
 })
 export class PagerComponent implements OnInit {
 
-  @Input() pager: Pager;
-  @Output() pageFilter= new EventEmitter<number>();
+  @Input() set pager(value: Pager) {
+    this.calculateTotalVisited(value); 
+    this.totalItems$.next(value.total_items)
+  }
+
+  @Output() pageFilter = new EventEmitter<number>();
   
   totalVisited$= new BehaviorSubject<number>(0);
   totalItems$= new BehaviorSubject<number>(0);
   constructor() { }
 
-  ngOnInit(): void {    
-    this.totalVisited$.next(this.pager.total_in_page) 
-    this.totalItems$.next(this.pager.total_items) 
+  ngOnInit() {    
+    
+     
   }
   
 
@@ -26,8 +30,8 @@ export class PagerComponent implements OnInit {
     this.pageFilter.emit(event.target.value)
   }
 
-  calculateTotalVisited() {
-    const pager = this.pager;
+  calculateTotalVisited(pager) {
+    
     if (pager.current_page === 1) {
       this.totalVisited$.next(pager.total_in_page)
       return

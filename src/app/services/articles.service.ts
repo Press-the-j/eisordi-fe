@@ -5,6 +5,7 @@ import { combineLatest, forkJoin, Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ResolveArticles } from '../store/articles/articles.actions';
+import { Pager } from '../../assets/constants/pager-constant.js'
 @Injectable({
   providedIn: 'root'
 })
@@ -18,28 +19,10 @@ export class ArticlesService {
   ) { }
 
   resolveArticles(): void {
-    //console.log('[DISPATCH LOADARTICLES]');
     this.store.dispatch(new ResolveArticles);
   }
 
-  resolveMagazines(): Observable<any> {
-    //console.log('[DISPATCH LOADMAGAZINES]');
-    const magazines_top = this.http.get<object[]>(`${this.apiBaseUrl}/api/articles/magazines/top`);
-    const magazines_page = this.http.get<object[]>(`${this.apiBaseUrl}/api/articles/magazines?per_page=1`)
-    return combineLatest([
-        magazines_top,
-        magazines_page
-    ]).pipe(
-      map((magazines) => {
-        return {
-          top: magazines[0],
-          perPage: magazines[1]
-        }
-      })
-    )
-  }
-
-  loadMagazinesPerPage(page: number): Observable<any> {
-    return this.http.get<object[]>(`${this.apiBaseUrl}/api/articles/magazines?per_page=${page}`)
+  loadMagazines(perPage: number = Pager.PER_PAGE, page:number = 1): Observable<any> {
+    return this.http.get<object[]>(`${this.apiBaseUrl}/api/articles/magazines?per_page=${perPage}&page=${page}`)
   }
 }
