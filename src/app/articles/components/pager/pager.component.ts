@@ -10,6 +10,8 @@ import { Pager } from 'src/app/models/pager';
 export class PagerComponent implements OnInit {
 
   @Input() set pager(value: Pager) {
+    console.log(value);
+    
     this.calculateTotalVisited(value); 
     this.totalItems$.next(value.total_items)
   }
@@ -31,7 +33,6 @@ export class PagerComponent implements OnInit {
   }
 
   calculateTotalVisited(pager) {
-    
     if (pager.current_page === 1) {
       this.totalVisited$.next(pager.total_in_page)
       return

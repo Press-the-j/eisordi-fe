@@ -31,6 +31,10 @@ export function MagazinesReducer(state = initialState, action: All): MagazinesSt
         ...state,
         archive: [...magazines],
         magazines: [...magazines],
+        total_page: action.payload.total_page,
+        total_in_page: action.payload.total_in_page,
+        total_items: action.payload.total_items,
+        current_page: action.payload.current_page,
         per_page: perPage
       };
     }
