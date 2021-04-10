@@ -56,14 +56,11 @@ export class MagazineComponent implements OnInit, OnDestroy {
     console.log('magazine changepage', value);
     const nextPage = value === Direction.NEXT ? this.pager.current_page + 1 : this.pager.current_page - 1
     const pageInStorage = this.pager.page_in_storage;
-    console.log(pageInStorage);
-    console.log(nextPage);
+    
     if (!pageInStorage.includes(nextPage))
       this.store.dispatch(new LoadMagazinesPerPage({per_page:this.pager.per_page, page:this.pager.current_page + 1}));
     if (pageInStorage.includes(nextPage))
       this.store.dispatch(new SwitchMagazinesPerPage(nextPage))
-    
-    
   }
 
   ngOnDestroy() {
