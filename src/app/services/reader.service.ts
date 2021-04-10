@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { TemplateConstants } from '../../assets/constants/template-constants.js'
+import { TemplateConstants } from '../constants/template-constants.js'
 
 @Injectable({
   providedIn: 'root'

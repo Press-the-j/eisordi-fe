@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ReaderService } from 'src/app/services/reader.service.js';
 
-import { TemplateConstants } from '../../../../assets/constants/template-constants.js'
+import { TemplateConstants } from '../../../constants/template-constants.js'
 
 @Component({
   selector: 'app-reader',

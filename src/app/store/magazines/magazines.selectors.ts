@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { Pager } from "src/app/models/pager";
 import { MagazinesState } from "./magazines.states";
 
 export const getArticlesState = createFeatureSelector<MagazinesState>('magazinesState');
@@ -26,12 +27,13 @@ export const perPage = createSelector(
 export const pagerMagazines = createSelector(
   getArticlesState,
   (feature: MagazinesState) => {
-    const pager = {
+    const pager: Pager = {
       per_page: feature.per_page,
       current_page: feature.current_page,
       total_items: feature.total_items,
       total_page: feature.total_page,
-      total_in_page: feature.total_in_page
+      total_in_page: feature.total_in_page,
+      page_in_storage: feature.page_in_storage
     }
     return pager
   }

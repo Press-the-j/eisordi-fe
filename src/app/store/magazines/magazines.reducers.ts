@@ -5,6 +5,8 @@ export function MagazinesReducer(state = initialState, action: All): MagazinesSt
   switch (action.type) {
     case MagazinesActionsTypes.MAGAZINES_LOADED: {
       const magazines = [...action.payload.items];
+      const pageInStorage = [...state.page_in_storage];
+      const newPageStorage: number[] = pageInStorage.includes(action.payload.current_page) ? [...pageInStorage] : [...pageInStorage, action.payload.current_page];
       return {
         ...state,
         archive: [ ...state.archive,...magazines],
@@ -14,7 +16,8 @@ export function MagazinesReducer(state = initialState, action: All): MagazinesSt
         total_in_page: action.payload.total_in_page,
         total_items: action.payload.total_items,
         current_page: action.payload.current_page,
-        per_page: action.payload.per_page
+        per_page: action.payload.per_page,
+        page_in_storage: [...newPageStorage]
       };
     }
     case MagazinesActionsTypes.MAGAZINES_TOP_LOADED: {
@@ -22,6 +25,21 @@ export function MagazinesReducer(state = initialState, action: All): MagazinesSt
       return {
         ...state,
         magazines_top: magazines
+      };
+    }
+    case MagazinesActionsTypes.SWITCH_MAGAZINES_PER_PAGE: {
+      const archive = [...state.archive];
+      const n = state.per_page
+      //divido l'archivio in tanti array della lungezza del per_page
+      const archivePaged = new Array(Math.ceil(archive.length / n)).fill(0).map(_ => archive.splice(0, n));
+      //nell'azione passo la prossima pagina. per syncare l'index dell'array sottraggo 1 all'index
+      const page = action.payload - 1;
+      const magazines = archivePaged[page]; 
+      return {
+        ...state,
+        magazines: [...magazines],
+        current_page: action.payload,
+
       };
     }
     case MagazinesActionsTypes.MAGAZINES_PAGER_FILTER_CHANGED: {

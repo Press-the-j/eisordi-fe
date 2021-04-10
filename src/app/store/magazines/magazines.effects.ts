@@ -7,7 +7,7 @@ import { ArticlesService } from 'src/app/services/articles.service';
 import { LogService } from 'src/app/services/dev/log.service';
 import { ErrorService } from 'src/app/services/error.service';
 import { isLoadMagazines } from '../articles/articles.actions';
-import { LoadMagazinesPerPage, MagazinesActionsTypes, MagazinesFailure, MagazinesLoaded, MagazinesPagerFilterChanged, MagazinesTopLoaded } from './magazines.actions';
+import { ChangeMagazinesPagerFilter, LoadMagazinesPerPage, MagazinesActionsTypes, MagazinesFailure, MagazinesLoaded, MagazinesPagerFilterChanged, MagazinesTopLoaded } from './magazines.actions';
 
 
 @Injectable()
@@ -41,16 +41,16 @@ export class MagazinesEffects {
           );
     
     @Effect()
-   ChangeMagazinesPageFilter: Observable<any> = this.actions$
+    ChangeMagazinesPageFilter: Observable<any> = this.actions$
           .pipe(
             ofType(MagazinesActionsTypes.CHANGE_MAGAZINES_PAGER_FILTER),
-            switchMap((action: LoadMagazinesPerPage) => {
+            switchMap((action: ChangeMagazinesPagerFilter) => {
               return this.articlesService.loadMagazines(action.payload).pipe(
                 tap((magazines) => console.log('MAGAZINES: ', magazines)
                 ),
-                switchMap((magazines)=>[
+                map((magazines)=>
                   new MagazinesPagerFilterChanged(magazines),
-                ]),
+                ),
                 catchError((error) => {
                   return of(new MagazinesFailure(error))
                 })
@@ -62,7 +62,7 @@ export class MagazinesEffects {
           .pipe(
             ofType(MagazinesActionsTypes.LOAD_MAGAZINES_PER_PAGE),
             switchMap((action: LoadMagazinesPerPage) => {
-              return this.articlesService.loadMagazines(action.payload.perPage, action.payload.page).pipe(
+              return this.articlesService.loadMagazines(action.payload.per_page, action.payload.page).pipe(
                 tap((magazines) => console.log('MAGAZINES: ', magazines)
                 ),
                 switchMap((magazines)=>[

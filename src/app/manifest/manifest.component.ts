@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TemplateConstants } from '../../assets/constants/template-constants.js'
+import { TemplateConstants } from '../constants/template-constants.js'
 @Component({
   selector: 'app-manifest',
   templateUrl: './manifest.component.html',

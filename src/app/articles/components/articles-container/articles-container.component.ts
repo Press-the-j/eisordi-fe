@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Pager } from 'src/app/models/pager';
 import { ArticlesService } from 'src/app/services/articles.service';
+import { Direction } from '../../../constants/direction-constants'
 
 @Component({
   selector: 'app-articles-container',
@@ -15,7 +16,8 @@ export class ArticlesContainerComponent implements OnInit {
   @Input() articles_all: object[]
   @Input() articles_top:object[] //$ {type} = Article
   @Input() articles_pager: Pager;
-  @Output() pageFilter = new EventEmitter<number>()
+  @Output() pageFilter = new EventEmitter<number>();
+  @Output() changePage = new EventEmitter<Direction>();
 
   constructor(
     public articlesService: ArticlesService,
@@ -26,11 +28,14 @@ export class ArticlesContainerComponent implements OnInit {
     
   }
 
-  onPageFilter(value) {
+  onPageFilter(value: number) {
     console.log('catch in container');
-    this.pageFilter.emit(value)
+    return this.pageFilter.emit(value)
   }
 
+  onChangePage(value: Direction) {
+    return this.changePage.emit(value)
+  }
 
 
 

@@ -1,7 +1,7 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { ScreenConstants } from '../../assets/constants/screen-constants'
+import { ScreenConstants } from '../constants/screen-constants'
 
 
 @Injectable()

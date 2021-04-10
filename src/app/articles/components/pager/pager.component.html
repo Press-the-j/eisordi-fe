@@ -9,19 +9,19 @@
   </div>
   <div class="pager-counter">
     <span class="total-visited">
-      {{ totalVisited$ | async }}
+      {{ totalVisited$$ | async }}
     </span>
     <span class ="pager-text-style"> di </span>
     <span class="total-items">
-      {{ totalItems$ | async }}
+      {{ totalItems$$ | async }}
     </span>
   </div>
   <div class="arrows">
-    <div class="arrow-prev">
+    <button [disabled]="disablePrevButton$$ | async"  (click)="onPrev()" class="arrow-prev">
       &lt;
-    </div>
-    <div class="arrow-next">
+    </button>
+    <button [disabled]="disableNextButton$$ | async" (click)="onNext()"class="arrow-next">
       &gt;
-    </div>
+    </button>
   </div>
 </div>

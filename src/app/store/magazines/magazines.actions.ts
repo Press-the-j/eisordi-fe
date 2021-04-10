@@ -6,6 +6,7 @@ MAGAZINES_TOP_LOADED = '[MAGAZINES] Magazines top loaded',
 MAGAZINES_LOADED = '[MAGAZINES] Magazines Loaded',
 MAGAZINES_FAILURE = '[MAGAZINES] Magazines failure',
 LOAD_MAGAZINES_PER_PAGE = '[MAGAZINES] Load magazines per page',
+SWITCH_MAGAZINES_PER_PAGE = '[MAGAZINES] Switch magazines per page',
 CHANGE_MAGAZINES_PAGER_FILTER = '[MAGAZINES] Change magazines page filter',
 MAGAZINES_PAGER_FILTER_CHANGED = '[MAGAZINES] Magazines page filter changed',
 SET_PAGE_FILTER_MAGAZINES = '[MAGAZINES] Set page filter magazines'
@@ -28,7 +29,11 @@ export class MagazinesPagerFilterChanged implements Action {
 }
 export class LoadMagazinesPerPage implements Action {
   readonly type = MagazinesActionsTypes.LOAD_MAGAZINES_PER_PAGE;
-  constructor(public payload: any) { }
+  constructor(public payload: {per_page:number, page:number}) { }
+}
+export class SwitchMagazinesPerPage implements Action {
+  readonly type = MagazinesActionsTypes.SWITCH_MAGAZINES_PER_PAGE;
+  constructor(public payload: number) { }
 }
 export class ResolveMagazines implements Action {
   readonly type = MagazinesActionsTypes.RESOLVE_MAGAZINES;
@@ -42,6 +47,7 @@ export type All =
       ResolveMagazines
     | MagazinesLoaded
     | LoadMagazinesPerPage
+    | SwitchMagazinesPerPage
     | ChangeMagazinesPagerFilter
     | MagazinesPagerFilterChanged
     | MagazinesTopLoaded

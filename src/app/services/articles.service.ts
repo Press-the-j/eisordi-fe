@@ -5,7 +5,7 @@ import { combineLatest, forkJoin, Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ResolveArticles } from '../store/articles/articles.actions';
-import { Pager } from '../../assets/constants/pager-constant.js'
+import { Pager } from '../constants/pager-constant.js'
 @Injectable({
   providedIn: 'root'
 })

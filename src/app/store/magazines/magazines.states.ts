@@ -1,8 +1,9 @@
-import { Pager } from '../../../assets/constants/pager-constant.js'
+import { Pager } from '../../constants/pager-constant.js'
 export interface MagazinesState {
   magazines_top: object[] | null; //$ tipizza article
   magazines: object[] | null; //$ tipizza article
-  archive: any[]; //$ tipizza article
+  archive: any[] | []; //$ tipizza article
+  page_in_storage: number[],
   total_page: number,
   total_in_page: number,
   total_items: number | null,
@@ -16,6 +17,7 @@ export const initialState: MagazinesState = {
   magazines_top: null,
   magazines: null,
   archive: [],
+  page_in_storage: [1],
   total_page: null,
   total_in_page: null,
   total_items: null,
