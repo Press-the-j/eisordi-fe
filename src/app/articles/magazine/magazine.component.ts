@@ -33,7 +33,7 @@ export class MagazineComponent implements OnInit, OnDestroy {
     )
 
     const magazines_all$ = this.store.select(getMagazinesAll).pipe(
-      map(magazines => this.magazines_all$$.next(magazines))
+      map(magazines => this.magazines_all$$.next(magazines)),
     )
 
     const magazines_pager$ = this.store.select(pagerMagazines).pipe(

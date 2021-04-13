@@ -1,7 +1,11 @@
-  <div class="wrap-article-card" >
-    <a [routerLink]="" class="article-card">
-      {{ article_item | json}}
-      Qui va la card dell'articolo
-    </a>
-  </div>
+  <ng-container *ngIf="(article$$ | async) let article;">
+    <div class="wrap-article-card" >
+      <div class="img-container">
+        <img class="img-background"[src]="article.img_path" [alt]="article.title">
+      </div>
+      <div class="article-card">
+      </div>
+    </div>
+  </ng-container>
+    
 

@@ -1,24 +1,37 @@
-$padding-article-card: 0.85em; 
+$padding-article-card: 0.85em;
+
+$card-width: 90vw;
+$card-height:  246px; 
 
 .wrap-article-card {
   margin: 1.25rem 0;
-  max-width: 90vw; 
-  height: 300px;
-  padding: $padding-article-card;
+  width: $card-width;
+  height: $card-height;
   background-color: yellow ;
   position: relative;
+  background-color: red;
 
-  &.is-open {
-    min-width: 90vw;
-  }
+  .img-container {
+    position: absolute;
+    height: $card-height;
+    width: $card-width;
+    top:0;
+    left:0;
+    overflow: hidden;
+    .img-background {
+      max-width: 120%;
+    }
 }
 
 .article-card {
   display: block;
-  height: 100%;
-  min-width: 100%;
-  background-color: red;
+  position: relative;
+  height: $card-height;
+  width: $card-width;
+  background-color:rgba(0,0,0,0.4);
   transition: all 2s ease-in-out;
+  z-index: 10;
+}
 
   /* &.is-open {
     max-height: 300px;
